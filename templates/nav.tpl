@@ -8,9 +8,12 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="home">Home</a>
         <a class="nav-link" href="list">List</a>
-        <a class="nav-link" href="about">About</a>
-        <a class="nav-link disabled">Contact Us</a>
         <a class="nav-link" href="admin">Administrator</a>
+
+      {if isset ($smarty.session.USER_ID)}
+        <a class="nav-link" href="logout"> Logout ({$smarty.session.USER_EMAIL})</a>
+      {/if} 
+       
       </div>
     </div>
   </div>
