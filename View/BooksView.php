@@ -15,7 +15,6 @@ class BooksView{
 
     function showBooks($books){
 
-        /* formBook.tpl es para ingresar registro nuevo - sec admin */
         $this->smarty->assign('estado', "nuevo");
         $this->smarty->assign('books', $books);
 
@@ -55,8 +54,41 @@ class BooksView{
 
     $this->smarty->assign('estado', "editar");
     $this->smarty->assign('book', $book);
+    $this->smarty->assign('ficha', "Libros");
 
     $this->smarty->display('templates/editBook.tpl'); /* form para editar y actualizar libro en db */
   }
 
+/**********************************************************************************/
+/*******   COUNTRY  ***************************************************************/
+/**********************************************************************************/
+
+    function editCountry($country){
+
+        $this->smarty->assign('estado', "editar");
+        $this->smarty->assign('country', $country);
+        $this->smarty->assign('ficha', "Paises");
+        
+        $this->smarty->display('templates/editBook.tpl'); /* form para editar y actualizar libro en db */
+    }
+
+    function showListCountries($countries){
+
+        
+        $this->smarty->assign('countries', $countries);
+
+        $this->smarty->display('templates/showCountries.tpl'); /* muestra el listado de libros y paises*/
+
+        echo'
+        <ul>
+        <select>';
+        foreach ($countries as $country) {
+            echo'
+            <option value="'.$country->id_country.'">'.$country->country.'</option>';
+        }
+        echo'</select>
+        </ul>';
+
+    }
+ 
 }

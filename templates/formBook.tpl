@@ -14,8 +14,13 @@
                     <label for="b_year" class="form-label">Año</label>
                     <input type="text" class="form-control" name="b_year" >
 
-                    <label for="b_country" class="form-label">Origen</label>
-                    <input type="text" class="form-control" name="b_country" >
+                    <label for="b_country" class="form-label"> Origen
+                    <select name="country">
+                        {foreach from=$countries item=$country}
+                            <option value="{$country->id_country}">{$country->country}</option>
+                        {/foreach}
+                        </select> 
+                    </label>
                 </div>
                 <div class="mb-3 form-check">
 

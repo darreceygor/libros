@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2021 a las 08:52:17
+-- Tiempo de generación: 13-10-2021 a las 09:25:48
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -145,6 +145,64 @@ INSERT INTO `books` (`id_book`, `b_title`, `b_autor`, `b_year`, `b_country`) VAL
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `country`
+--
+
+CREATE TABLE `country` (
+  `id_country` int(11) NOT NULL,
+  `country` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `country`
+--
+
+INSERT INTO `country` (`id_country`, `country`) VALUES
+(1, 'Islandia'),
+(2, 'Estados Unidos'),
+(3, 'Imperio aqueménida'),
+(4, 'India/Irán/Irak/Egipto'),
+(5, 'Nigeria'),
+(6, 'Dinamarca'),
+(7, 'Italia'),
+(8, 'Reino Unido'),
+(9, 'Francia'),
+(10, 'Irlanda'),
+(11, 'Rávena'),
+(12, 'Argentina'),
+(13, 'Imperio francés'),
+(14, 'Francia'),
+(15, 'España'),
+(16, 'Inglaterra'),
+(17, 'Rusia'),
+(18, 'Alemania'),
+(19, 'Imperio ateniense'),
+(20, 'Colombia'),
+(21, 'Alemania'),
+(22, 'Ucrania'),
+(23, 'Alemania Occidental'),
+(24, 'Brasil'),
+(25, 'Noruega'),
+(26, 'Probablemente Esmirna'),
+(27, 'Estado Libre Irlandés'),
+(28, 'República de Checoslovaquia'),
+(29, 'India'),
+(30, 'Japón'),
+(31, 'Grecia'),
+(32, 'Suecia'),
+(33, 'China'),
+(34, 'Egipto'),
+(35, 'Austria'),
+(36, 'Imperio romano'),
+(37, 'Portugal'),
+(38, 'México'),
+(39, 'Imperio mongol'),
+(40, 'Sudán');
+
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -172,6 +230,12 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`id_book`);
 
 --
+-- Indices de la tabla `country`
+--
+ALTER TABLE `country`
+  ADD PRIMARY KEY (`id_country`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -186,6 +250,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `books`
   MODIFY `id_book` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+
+--
+-- AUTO_INCREMENT de la tabla `country`
+--
+ALTER TABLE `country`
+  MODIFY `id_country` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

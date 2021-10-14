@@ -7,7 +7,7 @@
         <h5 class="card-title">{$book->b_title}</h5>
         <h6 class="card-subtitle mb-2 text-muted"> </h6>
         <p class="card-text">{$book->b_year}</p>
-        <p class="card-text">{$book->b_country}</p>
+        <p class="card-text">{$book->country}</p>
         <p class="card-text">{$book->b_autor}</p>
         <p class="card-text"> </p>
     </div>

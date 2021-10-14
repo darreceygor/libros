@@ -29,13 +29,15 @@ class BooksController{
         $this->view->showBook($book);
     }
 
-    /*PRIVADO - USER: ADMIN*/    
     function showListBooks(){
         $this->checkLoggedIn();
         $books = $this->model->getBooks();
         $this->view->showBooks($books);
+
     }
 
+    
+    /*CRUD BOOK*/
     function createBook(){
         $this->checkLoggedIn();
         $this->model->insertBook($_POST['b_title'], $_POST['b_autor'], $_POST['b_year'], $_POST['b_country']);
@@ -60,6 +62,50 @@ class BooksController{
         $this->view->showAdminLocation();
     
     }
+
+    
+/**********************************************************************************/
+/*******   COUNTRY  ***************************************************************/
+/**********************************************************************************/
+
+    /*CRUD COUNTRY*/
+
+    function showListCountries(){
+        $countries = $this->model->getCountries();
+        $this->view->showListCountries($countries);
+    }
+
+    function createCountry(){
+        $this->checkLoggedIn();
+        $this->model->insertCountry($_POST['country']);
+        $this->view->showAdminLocation();
+    }
+
+    function deleteCountry($id){
+        $this->checkLoggedIn();
+        $this->model->deleteCountry($id);
+        $this->view->showAdminLocation();
+    }
+
+    function editCountry($id){
+        $this->checkLoggedIn();
+        $country= $this->model->getCountry($id);
+        $this->view->editCountry($country);
+    }
+
+    function updateCountry($id){
+        $this->checkLoggedIn();
+        $this->model->updateCountry($id, $_POST['country2']);
+        $this->view->showAdminLocation();
+    
+    }
+
+   
+
+/**********************************************************************************/
+/*******   LOGGED IN  *************************************************************/
+/**********************************************************************************/
+
 
     private function checkLoggedIn() {
 

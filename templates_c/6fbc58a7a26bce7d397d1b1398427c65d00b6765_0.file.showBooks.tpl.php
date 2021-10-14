@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-12 10:13:20
+/* Smarty version 3.1.39, created on 2021-10-15 00:27:44
   from 'C:\xampp\htdocs\web\libros\templates\showBooks.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_616543a03f26b2_95338665',
+  'unifunc' => 'content_6168aee099e3c4_03799556',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6fbc58a7a26bce7d397d1b1398427c65d00b6765' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web\\libros\\templates\\showBooks.tpl',
-      1 => 1634026398,
+      1 => 1634250448,
       2 => 'file',
     ),
   ),
@@ -21,10 +21,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/header.tpl' => 1,
     'file:templates/nav.tpl' => 1,
     'file:templates/formBook.tpl' => 1,
+    'file:templates/formCountry.tpl' => 1,
+    'file:templates/showCountries.tpl' => 1,
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_616543a03f26b2_95338665 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6168aee099e3c4_03799556 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
         <?php $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -34,8 +36,18 @@ function content_616543a03f26b2_95338665 (Smarty_Internal_Template $_smarty_tpl)
         <?php if ($_smarty_tpl->tpl_vars['estado']->value == "nuevo") {?>
             <?php $_smarty_tpl->_subTemplateRender('file:templates/formBook.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+            <?php $_smarty_tpl->_subTemplateRender('file:templates/formCountry.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
         <?php }?>   
 
+        <section class=".col-md-4">
+          <?php $_smarty_tpl->_subTemplateRender("file:templates/showCountries.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>          
+        </section>
+
+        </section>
+
+        <section class=".col-md-8">
           <table class="table">
           <thead>
             <tr>
@@ -43,9 +55,10 @@ function content_616543a03f26b2_95338665 (Smarty_Internal_Template $_smarty_tpl)
               <th scope="col">Titulo</th>
               <th scope="col">Autor</th>
               <th scope="col">Año</th>
-              <th scope="col">Origen</th>
+
               <?php if ($_smarty_tpl->tpl_vars['estado']->value != "lista") {?>
-              <th scope="col 2" colspan="2">Acciones</th>
+                <th scope="col">Origen</th>
+                <th scope="col 2" colspan="2">Acciones</th>
               <?php }?>
             </tr>
             <br><br>
@@ -62,24 +75,25 @@ $_smarty_tpl->tpl_vars['book']->do_else = false;
               <th scope="row"><?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
 </th>
               <?php if ($_smarty_tpl->tpl_vars['estado']->value == "lista") {?>
-              <td><a href="viewBook/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
+                <td><a href="viewBook/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
 "><?php echo $_smarty_tpl->tpl_vars['book']->value->b_title;?>
 </a></td>
               <?php } else { ?>
-              <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_title;?>
+                <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_title;?>
 </td>
               <?php }?>
-              <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_autor;?>
+                <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_autor;?>
 </td>
-              <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_year;?>
+                <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_year;?>
 </td>
-              <td><?php echo $_smarty_tpl->tpl_vars['book']->value->b_country;?>
-</td>
-              
+                
+
               <?php if ($_smarty_tpl->tpl_vars['estado']->value != "lista") {?>
-              <td><a class="btn btn-warning" href="editBook/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
+                <td><?php echo $_smarty_tpl->tpl_vars['book']->value->country;?>
+</td>
+                <td><a class="btn btn-warning" href="editBook/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
 ">Editar</button></td>
-              <td><a class="btn btn-danger" href="deleteBook/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
+                <td><a class="btn btn-danger" href="deleteBook/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
 ">Eliminar</a></td>
               <?php }?>
             </tr>
@@ -89,6 +103,7 @@ $_smarty_tpl->tpl_vars['book']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>  
         </tbody>
         </table>
+        </section>
  
 
 <?php $_smarty_tpl->_subTemplateRender('file:templates/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

@@ -12,8 +12,8 @@
 </head>
 <body>
 
-<header>
-
+<header class="header-tpl">
+    <img class="img-fluid" src="./img/header.jpg">
 </header>
     
     

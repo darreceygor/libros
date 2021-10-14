@@ -1,14 +1,14 @@
 body {
         width: 1200px;
         margin: 0 auto; 
+        background-color: rgb(240, 238, 238);
 }
 
 
-header {
+
+header.header-tpl{
     width: auto;
     height: 250px;
-    background-color: blue;
-
 }
 
 img.icon {
