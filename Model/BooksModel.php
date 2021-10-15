@@ -59,8 +59,8 @@ class BooksModel{
     function getCountries(){
         $sentencia = $this->db->prepare("SELECT * FROM countries");
         $sentencia->execute();
-        $countries = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $countries;
+        $cpepe = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $cpepe;
     }
 
  

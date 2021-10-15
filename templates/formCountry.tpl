@@ -1,5 +1,5 @@
             </ul>
-            <h3>Nuevo Pais...</h3>
+            <h5>Nuevo Pais...</h5>
 
             <form action="createCountry" method="POST">
                 <div class="mb-3">

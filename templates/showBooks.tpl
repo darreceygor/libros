@@ -2,18 +2,15 @@
         {include file='templates/header.tpl'}
         {include file='templates/nav.tpl'}
 
-        {if $estado=="nuevo"}
-            {include file='templates/formBook.tpl'}
-            {include file='templates/formCountry.tpl'}
+      <div class="container"
+        {if $estado=="admin"}
+
+                {include file='templates/formBook.tpl'}
+                {include file='templates/formCountry.tpl'}
+  
         {/if}   
 
-        <section class=".col-md-4">
-          {include file="templates/showCountries.tpl"}          
-        </section>
-
-        </section>
-
-        <section class=".col-md-8">
+        <section>
           <table class="table">
           <thead>
             <tr>
@@ -21,9 +18,10 @@
               <th scope="col">Titulo</th>
               <th scope="col">Autor</th>
               <th scope="col">Año</th>
-
-              {if $estado!="lista"}
+              {if $estado=="lista"}
                 <th scope="col">Origen</th>
+               {/if} 
+              {if $estado=="admin"}
                 <th scope="col 2" colspan="2">Acciones</th>
               {/if}
             </tr>
@@ -39,12 +37,14 @@
               {else}
                 <td>{$book->b_title}</td>
               {/if}
+
                 <td>{$book->b_autor}</td>
                 <td>{$book->b_year}</td>
-                
+              {if $estado=="lista"}  
+                <td>{$book->name}</td>
+              {/if}
 
-              {if $estado!="lista"}
-                <td>{$book->country}</td>
+              {if $estado=="admin"}                
                 <td><a class="btn btn-warning" href="editBook/{$book->id_book}">Editar</button></td>
                 <td><a class="btn btn-danger" href="deleteBook/{$book->id_book}">Eliminar</a></td>
               {/if}
@@ -53,7 +53,10 @@
         {/foreach}  
         </tbody>
         </table>
-        </section>
+        </section> 
+    </div>
  
 
 {include file='templates/footer.tpl'}
+
+

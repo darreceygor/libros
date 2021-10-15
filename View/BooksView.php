@@ -15,7 +15,7 @@ class BooksView{
 
     function showBooks($books){
 
-        $this->smarty->assign('estado', "nuevo");
+        $this->smarty->assign('estado', "admin");
         $this->smarty->assign('books', $books);
 
         $this->smarty->display('templates/showBooks.tpl'); /* muestra el listado de libros */
@@ -42,7 +42,7 @@ class BooksView{
         $this->smarty->display('templates/cardBook.tpl'); /* muestra un libro */
     }
 
-    /* seccion listado publica */
+    /* SECCION PUBLICA - LISTADO GENERAL */
     function showList($books){
         $this->smarty->assign('estado', "lista");
         $this->smarty->assign('books', $books);
@@ -73,21 +73,10 @@ class BooksView{
     }
 
     function showListCountries($countries){
-
-        
+ 
         $this->smarty->assign('countries', $countries);
-
         $this->smarty->display('templates/showCountries.tpl'); /* muestra el listado de libros y paises*/
 
-        echo'
-        <ul>
-        <select>';
-        foreach ($countries as $country) {
-            echo'
-            <option value="'.$country->id_country.'">'.$country->country.'</option>';
-        }
-        echo'</select>
-        </ul>';
 
     }
  

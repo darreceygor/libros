@@ -1,6 +1,6 @@
 
 {include file='templates/header.tpl'}
-{*         {include file='templates/nav.tpl'} *}
+
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">

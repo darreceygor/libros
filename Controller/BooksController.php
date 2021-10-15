@@ -71,8 +71,8 @@ class BooksController{
     /*CRUD COUNTRY*/
 
     function showListCountries(){
-        $countries = $this->model->getCountries();
-        $this->view->showListCountries($countries);
+        $cpepe = $this->model->getCountries();
+        $this->view->showListCountries($cpepe);
     }
 
     function createCountry(){
