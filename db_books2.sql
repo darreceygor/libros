@@ -32,7 +32,7 @@ CREATE TABLE `books` (
   `b_title` varchar(100) NOT NULL,
   `b_autor` varchar(100) NOT NULL,
   `b_year` varchar(20) NOT NULL,
-  `b_country` varchar(150) NOT NULL
+  `b_country` int (11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

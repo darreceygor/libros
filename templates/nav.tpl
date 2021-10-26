@@ -7,13 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="home">Home</a>
-        <a class="nav-link" href="list">List</a>
+        <a class="nav-link" href="countries">Countries List</a>
+        <a class="nav-link" href="books">Books List</a>
         <a class="nav-link" href="admin">Administrator</a>
-      
-      {if isset ($smarty.session.USER_ID)}
-        <a class="nav-link" href="logout"> Logout ({$smarty.session.USER_EMAIL})</a>
-      {/if} 
-       
+          <div class="d-flex">
+            {if isset($smarty.session.USER_ID)} 
+              <a class="nav-link" href="logout">{$smarty.session.USER_EMAIL}, Logout</a>
+            {else}
+              <a class="nav-link" href="login">Login</a>
+            {/if}
+          </div>
       </div>
     </div>
   </div>

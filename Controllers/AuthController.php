@@ -1,7 +1,7 @@
 <?php
 
-include_once "View/authView.php";
-include_once "Model/UserModel.php";
+include_once "Views/AuthView.php";
+include_once "Models/UserModel.php";
 
 
 class AuthController {
