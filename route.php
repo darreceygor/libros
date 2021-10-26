@@ -35,7 +35,9 @@ switch ($params[0]) {
         $controller = new Controller();
         $controller->showAdmin(); 
         break;
-
+       
+/*********************************************************************/
+/**************************** MENU USERS *****************************/
     case 'login':
         $authController = new AuthController();
         $authController->showLogin(); 
@@ -48,7 +50,17 @@ switch ($params[0]) {
         $authController = new AuthController();
         $authController->login(); 
         break;
+    case 'userAdmin':
+        $authController = new AuthController();
+        $authController->userAdmin(); 
+        break;
+     case 'addUser';
+        $authcontroller = new AuthController;
+        $authcontroller->addUser();
+        break;
 
+/************************ FIN MENU USERS *****************************/       
+/*********************************************************************/
 /**************************** MENU BOOKS *****************************/
     case 'booksAdmin': 
         $controller = new Controller();
@@ -64,7 +76,7 @@ switch ($params[0]) {
         break;   
     case 'addBook':
         $controller =new Controller();
-        $controller->addBook($params[1]);
+        $controller->addBook();
         break;
     case 'editBook':
         $controller = new Controller();
@@ -77,7 +89,7 @@ switch ($params[0]) {
     case 'delBook':
         $controller = new Controller();
         $controller->delBook($params[1]);
-
+    
 /************************ FIN MENU BOOKS *****************************/       
 /*********************************************************************/
 /**************************** MENU COUNTRIES *************************/

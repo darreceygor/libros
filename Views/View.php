@@ -55,6 +55,13 @@ class View {
         $this->smarty->display('templates/showBook.tpl');
     }
 
+    function showListUser($users){
+        $this->smarty->assign('users', $users);
+        $this->smarty->assign('user_rol','admin');
+        $this->smarty->display('templates/listUser.tpl');
+    }
+
+
     function showListBooks($books){
         $this->smarty->assign('books', $books);
         $this->smarty->assign('user_rol','books');
@@ -91,6 +98,8 @@ class View {
         $this->smarty->assign('country', $country);
         $this->smarty->display('templates/editCountry.tpl');
     }
+
+    
 
     
 

@@ -6,6 +6,14 @@
 {/if}
 <div class="container mt-3">
     <h3> Listado de Libros</h3>
+
+    {if $user_rol=='books'}
+        <div class="input-group mb-3">
+            <button class="input-group-text" id="basic-addon1">Buscar</button>
+            <input type="text" class="form-control" placeholder="Search books..." >
+        </div>
+    {/if}
+
         {if $user_rol=='admin'}
             <div class="container-sm mt-3">
                 <form name="formAddBook" method='POST' action="addBook" >
@@ -13,13 +21,13 @@
                         <div><label></div>
                             <div class="col">
                                 <label> Titulo </label>
-                                <input type="text" class="form-control" name ="title" placeholder="Titulo" >
+                                <input type="text" class="form-control" name ="title" placeholder="Titulo" required>
                                 <label> Año </label>
                                 <input type="text" class="form-control" name ="year" placeholder="Año" >
                             </div>
                             <div class="col">
                                 <label> Autor </label>
-                                <input type="text" class="form-control" name ="autor" placeholder="Autor" >
+                                <input type="text" class="form-control" name ="autor" placeholder="Autor" required>
                                 <label> Country</label>
                                 <select class="form-control" name="country">
                                     <option selected>Elegir</option>
@@ -27,7 +35,11 @@
                                             <option value="{$country->id_country}">{$country->name}</option>
                                         {/foreach}
                                 </select>
+                                <label> Si no encuentra el pais correspondiente, puede ingresarlo <a href="countriesAdmin">acá</a></label>
                                  
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" id="image" name="image">
                             </div>
                         </div> 
                     <div class="mt-3">

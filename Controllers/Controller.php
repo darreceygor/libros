@@ -23,17 +23,14 @@ class Controller{
     }
 
     function showAdmin(){
-        $this->authHelper->checkLoggedIn();
         $this->view->showAdminPage();
-       
-        
-  
     }
 
     /*FIN PAGINAS PRINCIPALES*/
 
     /* BOOKS */
     function getBooks(){ /*LISTADO PUBLICO*/
+        $this->authHelper->checkLoggedIn();
         $books=$this->model->getBooks();
         $countries=$this->model->getCountries();
         $this->view->showListBooksAdmin($books,$countries);
@@ -50,7 +47,7 @@ class Controller{
         $this->view->showBook($book,$country,$user_rol);
     }
 
-    function addBook($id){
+    function addBook(){
         $this->authHelper->checkLoggedIn();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -58,6 +55,33 @@ class Controller{
             $autor = $_REQUEST['autor'];
             $year = $_REQUEST['year'];
             $country = $_REQUEST['country'];
+
+            /* $imgFile = $_REQUEST['image']['name'];
+            $tmp_dir = $_REQUEST['image']['tmp_name'];
+            $imgSize = $_REQUEST['image']['size'];
+            
+            $upload_dir = 'user_image/'; // upload directory
+            $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+         
+            $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+            // rename uploading image
+            $userpic = rand(1000,1000000).".".$imgExt;
+
+            // allow valid image file formats
+                if(in_array($imgExt, $valid_extensions)){   
+                    // Check file size '5MB'
+                    if($imgSize < 5000000)    {
+                    move_uploaded_file($tmp_dir,$upload_dir.$userpic);
+                    }
+                    else{
+                    $errMSG = "Sorry, your file is too large.";
+                    }
+                }
+                else{
+                    $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
+                }
+                
+ */
             $this->model->addBook($title, $autor, $year, $country);
             $this->view->showAdminBookLocation(); 
         }
@@ -94,11 +118,13 @@ class Controller{
 
     /* COUNTRIES*/
     function getCountries(){ /*LISTADO PUBLICO*/
+        
         $countries=$this->model->getCountries();
         $this->view->showListCountries($countries);
     }
 
     function getCountriesAdmin(){ /*LISTADO ADMIN*/
+        $this->authHelper->checkLoggedIn();
         $countries=$this->model->getCountries();
         $this->view->showListCountriesAdmin($countries);
     }
@@ -152,7 +178,7 @@ class Controller{
                 $exist = TRUE;
             }
             $index++;
-    }
+        }
         if ($exist == FALSE) {
             $this->model->delCountry($id);      
             $this->view->showAdminListLocation();

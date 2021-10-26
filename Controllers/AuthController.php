@@ -1,17 +1,27 @@
 <?php
 
 include_once "Views/AuthView.php";
+include_once "Views/View.php";
+
 include_once "Models/UserModel.php";
+include_once "Models/Model.php";
 
 
 class AuthController {
 
     private $model;
     private $view;
+    private $viewV;
+    private $authHelper;
 
     public function __construct(){
         $this->view = new AuthView();
+        $this->viewV = new View();
+
         $this->model = new UserModel();
+        $this->modelV = new Model();
+
+        $this->authHelper = new AuthHelper();
     }
 
     public function showLogin(){
@@ -37,8 +47,7 @@ class AuthController {
                 $_SESSION['USER_ID'] = $user->id;
                 $_SESSION['USER_EMAIL'] = $user->email;
 
-
-                header ("Location:". ADMIN);
+                header("Location: " . BASE_URL);
             }else{
                 $this->view->showFormLogin("Usuario o contraseña invalido");
             }
@@ -49,7 +58,20 @@ class AuthController {
     public function logout(){
         session_start();
         session_destroy();
-        header("Location:". ADMIN);
+        header("Location:". BASE_URL);
     }
+       
+    function userAdmin(){
+        $this->authHelper->checkLoggedIn();
+        $users=$this->modelV->getUsers();
+        $this->viewV->showListUser($users); 
+    }
+
+    
+    function addUser(){
+       
+        $this->view->showAddUser();
+    }
+        
 
 }

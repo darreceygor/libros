@@ -11,7 +11,7 @@ class Model {
     /* levanto todos los libros para render de listados */
     
     function getBook ($id){
-        $sentence= "SELECT * FROM books WHERE id_book=$id";
+        $sentence= "SELECT * FROM books WHERE id_book=?";
         $query = $this->db->prepare($sentence);
         $query->execute([$id]);
         $book = $query->fetch(PDO::FETCH_OBJ);
@@ -25,7 +25,15 @@ class Model {
         $books = $query->fetchAll(PDO::FETCH_OBJ);
         return $books;
     }
-    
+
+    function getUsers (){
+        $sentence= "SELECT * FROM users";
+        $query = $this->db->prepare($sentence);
+        $query->execute();
+        $users = $query->fetchAll(PDO::FETCH_OBJ);
+        return $users;
+    }
+
     function addBook($title, $autor, $year, $country){
         $query = $this->db->prepare("INSERT INTO books(b_title, b_autor, b_year, id_country) VALUES (?,?,?,?)");
         $query->execute([$title, $autor, $year, $country]);

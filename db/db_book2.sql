@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-10-2021 a las 08:02:21
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Tiempo de generación: 26-10-2021 a las 14:14:50
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,13 +40,14 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id_book`, `b_title`, `b_autor`, `b_year`, `id_country`) VALUES
-
 (6, 'Cuentos infantiles ed', 'Hans Christian Andersen', '1835–37', NULL),
 (7, 'Divina comedia', 'Dante Alighieri', '1265–1321 ed', 7),
 (8, 'Orgullo y prejuicio', 'Jane Austen', '1813', 8),
 (9, 'Papá Goriot', 'Honoré de Balzac', '1835', 9),
 (12, 'Ficciones editada', 'Jorge Luis Borges', '1944–86', 1),
-(13, 'Cumbres Borrascosas', 'Emily Brontë', '1847', 8);
+(13, 'Cumbres Borrascosas', 'Emily Brontë', '1847', 8),
+(14, '1984', 'George Orwel', '1949', 8),
+(15, 'Bajo la misma estrella ', 'John Green', '2012', 6);
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,7 @@ CREATE TABLE `countries` (
 --
 
 INSERT INTO `countries` (`id_country`, `name`) VALUES
-(1, 'Islandia'),
+(1, 'Islandia ed'),
 (2, 'Estados Unidos'),
 (3, 'Imperio aqueménida'),
 (4, 'India/Irán/Irak/Egipto'),
@@ -81,13 +82,14 @@ INSERT INTO `countries` (`id_country`, `name`) VALUES
 (16, 'Inglaterra'),
 (17, 'Rusia'),
 (18, 'Alemania'),
-(19, 'Imperio ateniense'),
 (20, 'Colombia'),
 (21, 'Alemania'),
 (22, 'Ucrania'),
 (23, 'Alemania Occidental'),
 (24, 'Brasil'),
-(25, 'Noruega');
+(25, 'Noruega'),
+(53, 'japon'),
+(54, 'Paraguay');
 
 -- --------------------------------------------------------
 
@@ -116,6 +118,7 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 -- Indices de la tabla `books`
 --
 ALTER TABLE `books`
+  ADD PRIMARY KEY (`id_book`),
   ADD KEY `id_country` (`id_country`);
 
 --
@@ -135,10 +138,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `books`
+--
+ALTER TABLE `books`
+  MODIFY `id_book` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT de la tabla `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id_country` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_country` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

@@ -13,4 +13,9 @@ class AuthView {
         $this->smarty->display('templates/formLogin.tpl');
         
     }
+
+    function showAddUser(){
+        $this->smarty->display('templates/formRegister.tpl');
+    }
+    
 }
