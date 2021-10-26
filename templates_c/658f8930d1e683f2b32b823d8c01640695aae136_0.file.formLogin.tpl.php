@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-14 22:39:40
-  from 'C:\xampp\htdocs\web\libros\templates\formLogin.tpl' */
+/* Smarty version 3.1.39, created on 2021-10-24 08:51:17
+  from 'C:\xampp\htdocs\prueba\templates\formLogin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6168958cadeb50_59679729',
+  'unifunc' => 'content_617502656dbaa9_01511259',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a4b292589585484e307515b4b6ef617fc7a623ee' => 
+    '658f8930d1e683f2b32b823d8c01640695aae136' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\web\\libros\\templates\\formLogin.tpl',
+      0 => 'C:\\xampp\\htdocs\\prueba\\templates\\formLogin.tpl',
       1 => 1634108898,
       2 => 'file',
     ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6168958cadeb50_59679729 (Smarty_Internal_Template $_smarty_tpl) {
+function content_617502656dbaa9_01511259 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

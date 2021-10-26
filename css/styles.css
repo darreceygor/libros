@@ -1,14 +1,30 @@
-body {
-        width: 1200px;
-        margin: 0 auto; 
-        background-color: rgb(240, 238, 238);
+* {
+    text-decoration: none;
+    list-style-type: none;
+    
 }
 
+.container-body {
+    width: 1200px;
+    margin: 0 auto; 
+    background-color: rgb(240, 238, 238);
+}
+
+.container-inside {
+    width: 50%;
+    margin: 0 auto; 
+
+}
 
 
 header.header-tpl{
     width: auto;
-    height: 250px;
+    height: 200px;
+}
+
+img.img-header-tpl{
+    width: auto;
+    height: 200px;
 }
 
 img.icon {

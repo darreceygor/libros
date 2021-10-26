@@ -1,2 +1,0 @@
-# libros
-Catalogo de libros
