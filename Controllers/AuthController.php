@@ -9,23 +9,23 @@ include_once "Models/Model.php";
 
 class AuthController {
 
-    private $model;
+    private $usermodel;
+    private $authview;
     private $view;
-    private $viewV;
     private $authHelper;
 
     public function __construct(){
-        $this->view = new AuthView();
-        $this->viewV = new View();
+        $this->authview = new AuthView();
+        $this->view = new View();
 
-        $this->model = new UserModel();
-        $this->modelV = new Model();
+        $this->usermodel = new UserModel();
+        $this->model = new Model();
 
         $this->authHelper = new AuthHelper();
     }
 
     public function showLogin(){
-        $this->view->showFormLogin();
+        $this->authview->showFormLogin();
     
     }
 
@@ -39,7 +39,7 @@ class AuthController {
 
             //Obtengo el usuario de la base de datos
 
-            $user = $this->model->getUser($email);
+            $user = $this->usermodel->getUser($email);
             
             //Si el usuario existe y las contraseñas coinciden
             if($user && password_verify($password,$user->password)){
@@ -49,7 +49,7 @@ class AuthController {
 
                 header("Location: " . BASE_URL);
             }else{
-                $this->view->showFormLogin("Usuario o contraseña invalido");
+                $this->suthview->showFormLogin("Usuario o contraseña invalido");
             }
         }
 
@@ -63,15 +63,23 @@ class AuthController {
        
     function userAdmin(){
         $this->authHelper->checkLoggedIn();
-        $users=$this->modelV->getUsers();
-        $this->viewV->showListUser($users); 
+        $users=$this->model->getUsers();
+        $this->view->showListUser($users); 
     }
 
     
     function addUser(){
        
-        $this->view->showAddUser();
+        $this->authview->showAddUser();
     }
+
+    function delUser($id){
+        $this->authHelper->checkLoggedIn();
+        $this->usermodel->delUser($id);
+        $this->view->showAdminUserLocation();
+
+    }
+
         
 
 }

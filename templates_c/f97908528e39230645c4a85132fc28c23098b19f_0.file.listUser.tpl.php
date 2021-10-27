@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-26 17:15:22
+/* Smarty version 3.1.39, created on 2021-10-27 19:55:00
   from 'C:\xampp1\htdocs\TPE\libros\templates\listUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61781b8abf18d9_25222595',
+  'unifunc' => 'content_617992742147c2_50023659',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f97908528e39230645c4a85132fc28c23098b19f' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\listUser.tpl',
-      1 => 1635261321,
+      1 => 1635357297,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_61781b8abf18d9_25222595 (Smarty_Internal_Template $_smarty_tpl) {
+function content_617992742147c2_50023659 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -69,7 +69,8 @@ $_smarty_tpl->tpl_vars['user']->do_else = false;
 </td>
                 <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
                     <td><a class="btn btn-secondary" href="#">Roles</button></td>
-                    <td><a class="btn btn-danger" href="#">Eliminar</a></td>
+                    <td><a class="btn btn-danger" href="delUser/<?php echo $_smarty_tpl->tpl_vars['user']->value->id;?>
+">Eliminar</a></td>
                 <?php }?>
                 
     </tr> 

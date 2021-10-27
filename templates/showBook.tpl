@@ -11,7 +11,7 @@
         <p class="card-text">Autor: {$book->b_autor}</p>
         <p class="card-text">Año: {$book->b_year}</p>
         <p class="card-text"> Pais/es: {$country->name}</p>
-        <a class='btn btn-primary btn-sm' href="{$user_rol}">Volver<a>
+        <a class='btn btn-primary btn-sm' href="{$user_rol}/1">Volver<a>
         </div>
     </div>
 </div>

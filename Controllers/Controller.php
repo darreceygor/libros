@@ -36,9 +36,16 @@ class Controller{
         $this->view->showListBooksAdmin($books,$countries);
     }
 
-    function getListBooks(){ /*LISTADO PUBLICO*/
-        $books=$this->model->getBooks();
-        $this->view->showListBooks($books);
+    function getListBooks($page){ /*LISTADO PUBLICO*/
+                
+        /*variables para paginacion*/
+        $itemsPerPage=$this->model->itemsPerPage();
+        $books=$this->model->getBooksLimit($page);
+        $rows=$this->model->getRowsBooks();
+        $pages=ceil($rows/$itemsPerPage);
+        
+        /* fin paginacion */
+        $this->view->showListBooks($books,$rows,$itemsPerPage,$pages,$page);
     }
 
     function getBook($id,$user_rol){
@@ -56,32 +63,6 @@ class Controller{
             $year = $_REQUEST['year'];
             $country = $_REQUEST['country'];
 
-            /* $imgFile = $_REQUEST['image']['name'];
-            $tmp_dir = $_REQUEST['image']['tmp_name'];
-            $imgSize = $_REQUEST['image']['size'];
-            
-            $upload_dir = 'user_image/'; // upload directory
-            $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
-         
-            $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-            // rename uploading image
-            $userpic = rand(1000,1000000).".".$imgExt;
-
-            // allow valid image file formats
-                if(in_array($imgExt, $valid_extensions)){   
-                    // Check file size '5MB'
-                    if($imgSize < 5000000)    {
-                    move_uploaded_file($tmp_dir,$upload_dir.$userpic);
-                    }
-                    else{
-                    $errMSG = "Sorry, your file is too large.";
-                    }
-                }
-                else{
-                    $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
-                }
-                
- */
             $this->model->addBook($title, $autor, $year, $country);
             $this->view->showAdminBookLocation(); 
         }
@@ -114,7 +95,6 @@ class Controller{
         $this->view->showAdminBookLocation();
     }
   
-
 
     /* COUNTRIES*/
     function getCountries(){ /*LISTADO PUBLICO*/
@@ -187,5 +167,13 @@ class Controller{
             $this->view->showError();
         } 
     }
+
+    function search($filter){
+        $listSearch=$this->model->search($filter);
+        $this->view->searchList($listSearch);
+        
+    }
+
+
 }
 

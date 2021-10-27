@@ -1,6 +1,8 @@
 {include file="templates/header.tpl"}
 {include file="templates/nav.tpl"}
 
+
+
 {if $user_rol=='admin'}
     {include file="templates/admin-nav.tpl"}
 {/if}
@@ -9,8 +11,10 @@
 
     {if $user_rol=='books'}
         <div class="input-group mb-3">
-            <button class="input-group-text" id="basic-addon1">Buscar</button>
-            <input type="text" class="form-control" placeholder="Search books..." >
+            <form action="search" method="GET">
+                <input type="text" class="form-control" placeholder="Search books..." id="filter" >
+                <button class="btn btn-success mt-1" type="submit" id="filter" name="filter">Buscar </button>
+            </form>
         </div>
     {/if}
 
@@ -90,8 +94,26 @@
                 
     </tr> 
         {/foreach}
+        <nav aria-label="Page navigation example">
+</nav>
     </tbody>
     </table>
+
+
+    {if $user_rol=='books'}   
+    <div class="m-0 row justify-content-center"> 
+        <div class="col-auto p-3 text-center">
+            <ul class="pagination">
+
+                <li class="page-item {$classPrev}"><a class="page-link" href="books/{$previous}">Previous</a></li>
+                {for $menuItem=1 to $pages}
+                    <li class="page-item"><a class="page-link" href="books/{$menuItem}">{$menuItem}</a></li>
+                {/for}
+                <li class="page-item {$classNext}"><a class="page-link" href="books/{$next}">Next</a></li>
+            </ul>
+        </div>
+    </div>
+    {/if}
 
 </div>
 

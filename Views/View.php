@@ -33,6 +33,9 @@ class View {
     function showAdminBookLocation(){
         header("Location: ".BASE_URL."booksAdmin");
     }
+    function showAdminUserLocation(){
+        header("Location: ".BASE_URL."userAdmin");
+    }
 
     function showListLocation(){
         header("Location: ".BASE_URL."books");
@@ -42,11 +45,11 @@ class View {
         $this->smarty->display('templates/error.tpl');
     }
 
-    function showBooks($books){
+/*     function showBooks($books){
         $this->smarty->assign('estado', "admin");
         $this->smarty->assign('books', $books);
-        $this->smarty->display('templates/showBooks.tpl'); /* muestra el listado de libros */
-    }
+        $this->smarty->display('templates/showBooks.tpl'); /* muestra el listado de libros 
+    } */
 
     function showBook($book, $country,$user_rol){
         $this->smarty->assign('book', $book);
@@ -61,12 +64,35 @@ class View {
         $this->smarty->display('templates/listUser.tpl');
     }
 
+/**********************************************/
+    function showListBooks($books, $rows, $itemsPerPage, $pages,$page){
+        /* variables paginacion*/    
 
-    function showListBooks($books){
+        $classNext='';
+        $classPrev='';
+        $this->smarty->assign('rows', $rows);
+        $this->smarty->assign('itemsPerPage', $itemsPerPage);
+        $this->smarty->assign('pages', $pages);
+        $this->smarty->assign('page', $page);
+        $this->smarty->assign('previous', $page-1);
+        if ($page-1<=0){
+            $classPrev='disabled';
+        }
+        $this->smarty->assign('classPrev',$classPrev);
+        $this->smarty->assign('next', $page+1);
+        if ($page+1>$pages){
+            $classNext='disabled';
+        }
+        $this->smarty->assign('classNext',$classNext);
+        /* fin variables paginacion*/ 
+
         $this->smarty->assign('books', $books);
+        
         $this->smarty->assign('user_rol','books');
         $this->smarty->display('templates/listBooks.tpl');
     }
+
+/**********************************************/
 
     function showListBooksAdmin($books,$countries){
         $this->smarty->assign('books', $books);
@@ -100,7 +126,14 @@ class View {
     }
 
     
+/*******************************************/
 
+function searchList($filter){
+
+    $this->smarty->assign($filter);
+    $this->smarty->display('templates/searchList.tpl');
+
+}
     
 
 

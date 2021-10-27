@@ -27,8 +27,8 @@
                 <td id="{$user->rol}">{$user->rol}</td>
                 <td id="{$user->password}">{$user->password}</td>
                 {if $user_rol=='admin'}
-                    <td><a class="btn btn-secondary" href="#">Roles</button></td>
-                    <td><a class="btn btn-danger" href="#">Eliminar</a></td>
+                    <td><a class="btn btn-secondary " href="#">Roles</button></td>
+                    <td><a class="btn btn-danger" href="delUser/{$user->id}">Eliminar</a></td>
                 {/if}
                 
     </tr> 

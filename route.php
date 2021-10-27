@@ -54,10 +54,14 @@ switch ($params[0]) {
         $authController = new AuthController();
         $authController->userAdmin(); 
         break;
-     case 'addUser';
+     case 'addUser':
         $authcontroller = new AuthController;
         $authcontroller->addUser();
-        break;
+        break; 
+    case 'delUser':
+        $authcontroller = new AuthController;
+        $authcontroller->delUser($params[1]);
+        break; 
 
 /************************ FIN MENU USERS *****************************/       
 /*********************************************************************/
@@ -68,7 +72,10 @@ switch ($params[0]) {
         break;
     case 'books': 
         $controller = new Controller();
-        $controller->getListBooks(); 
+        if (!isset($params[1])){
+            $params[1]=0;
+        }
+        $controller->getListBooks($params[1]); 
         break; 
     case 'book': 
         $controller = new Controller();
@@ -118,8 +125,13 @@ switch ($params[0]) {
         $controller = new Controller();
         $controller->delCountry($params[1]);
         break;
-/************************ FIN MENU COUNTRIES *************************/       
-
+/************************ FIN MENU COUNTRIES *************************/      
+/*********************************************************************/
+/**************************** MENU SEARCH ****************************/ 
+    case 'search':
+        $controller= new Controller();
+        $controller->search($params[1]);
+        break;
     default:
         echo'DEFAULT';
         break;

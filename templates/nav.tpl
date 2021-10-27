@@ -8,7 +8,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="home">Home</a>
         <a class="nav-link" href="countries">Countries List</a>
-        <a class="nav-link" href="books">Books List</a>
+        <a class="nav-link" href="books/1">Books List</a>
         <a class="nav-link" href="admin">Administrator</a>
           <div class="d-flex">
             {if isset($smarty.session.USER_ID)} 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-26 21:57:13
+/* Smarty version 3.1.39, created on 2021-10-27 21:41:56
   from 'C:\xampp1\htdocs\TPE\libros\templates\listBooks.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61785d9907cae2_23440021',
+  'unifunc' => 'content_6179ab849dc208_14147984',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '88837451639aa080953dc73c11d4326d7eb8f24a' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\listBooks.tpl',
-      1 => 1635278231,
+      1 => 1635363713,
       2 => 'file',
     ),
   ),
@@ -24,10 +24,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_61785d9907cae2_23440021 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6179ab849dc208_14147984 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+
+
 
 <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
     <?php $_smarty_tpl->_subTemplateRender("file:templates/admin-nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -37,8 +39,10 @@ $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_i
 
     <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'books') {?>
         <div class="input-group mb-3">
-            <button class="input-group-text" id="basic-addon1">Buscar</button>
-            <input type="text" class="form-control" placeholder="Search books..." >
+            <form action="search" method="GET">
+                <input type="text" class="form-control" placeholder="Search books..." id="filter" >
+                <button class="btn btn-success mt-1" type="submit" id="filter" name="filter">Buscar </button>
+            </form>
         </div>
     <?php }?>
 
@@ -150,8 +154,38 @@ $_smarty_tpl->tpl_vars['book']->do_else = false;
         <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        <nav aria-label="Page navigation example">
+</nav>
     </tbody>
     </table>
+
+
+    <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'books') {?>   
+    <div class="m-0 row justify-content-center"> 
+        <div class="col-auto p-3 text-center">
+            <ul class="pagination">
+
+                <li class="page-item <?php echo $_smarty_tpl->tpl_vars['classPrev']->value;?>
+"><a class="page-link" href="books/<?php echo $_smarty_tpl->tpl_vars['previous']->value;?>
+">Previous</a></li>
+                <?php
+$_smarty_tpl->tpl_vars['menuItem'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['menuItem']->step = 1;$_smarty_tpl->tpl_vars['menuItem']->total = (int) ceil(($_smarty_tpl->tpl_vars['menuItem']->step > 0 ? $_smarty_tpl->tpl_vars['pages']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['pages']->value)+1)/abs($_smarty_tpl->tpl_vars['menuItem']->step));
+if ($_smarty_tpl->tpl_vars['menuItem']->total > 0) {
+for ($_smarty_tpl->tpl_vars['menuItem']->value = 1, $_smarty_tpl->tpl_vars['menuItem']->iteration = 1;$_smarty_tpl->tpl_vars['menuItem']->iteration <= $_smarty_tpl->tpl_vars['menuItem']->total;$_smarty_tpl->tpl_vars['menuItem']->value += $_smarty_tpl->tpl_vars['menuItem']->step, $_smarty_tpl->tpl_vars['menuItem']->iteration++) {
+$_smarty_tpl->tpl_vars['menuItem']->first = $_smarty_tpl->tpl_vars['menuItem']->iteration === 1;$_smarty_tpl->tpl_vars['menuItem']->last = $_smarty_tpl->tpl_vars['menuItem']->iteration === $_smarty_tpl->tpl_vars['menuItem']->total;?>
+                    <li class="page-item"><a class="page-link" href="books/<?php echo $_smarty_tpl->tpl_vars['menuItem']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['menuItem']->value;?>
+</a></li>
+                <?php }
+}
+?>
+                <li class="page-item <?php echo $_smarty_tpl->tpl_vars['classNext']->value;?>
+"><a class="page-link" href="books/<?php echo $_smarty_tpl->tpl_vars['next']->value;?>
+">Next</a></li>
+            </ul>
+        </div>
+    </div>
+    <?php }?>
 
 </div>
 
