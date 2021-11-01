@@ -21,7 +21,7 @@
 
             <div class="col-md-auto col-8">
                     <button type="submit" class="btn btn-primary">Sign in</button>
-                    <a href="addUser" class="btn btn-secondary">Register</a>
+                    <a href="user" class="btn btn-secondary">Register</a>
             </div>
         </div>
         <div class="col-md-auto col-8">

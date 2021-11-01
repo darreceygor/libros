@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-26 15:22:15
+/* Smarty version 3.1.39, created on 2021-11-01 20:20:15
   from 'C:\xampp1\htdocs\TPE\libros\templates\listCountries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_617801077fff04_14499639',
+  'unifunc' => 'content_61803defe6bc07_28024031',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f4ca23b40e77f7e7e99d1d1ef1b6b7fb46e3441d' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\listCountries.tpl',
-      1 => 1635249868,
+      1 => 1635794413,
       2 => 'file',
     ),
   ),
@@ -24,10 +24,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_617801077fff04_14499639 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61803defe6bc07_28024031 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+
+
 
 <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
     <?php $_smarty_tpl->_subTemplateRender("file:templates/admin-nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -36,7 +38,7 @@ $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_i
 <div class="container-inside">
     <h3> Listado de Paises </h3>
 
-    <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+    <?php if (((isset($_SESSION['USER_ID']))) && ($_SESSION['USER_ROL'] == 'admin')) {?>
         <form action="addCountry" method="POST">
             <div class="input-group mb-3">
                 <input type="text" name="name" class="form-control" placeholder="Ingresar pais nuevo.."  aria-describedby="button-addon2">
@@ -52,7 +54,8 @@ $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_i
         <tr>
             <th scope="col">#</th>
             <th scope="col">Country Name</th>
-            <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+
+            <?php if ($_SESSION['USER_ROL'] == 'admin') {?>
                 <th col=2> Actions <th>
             <?php }?>
         </tr>
@@ -72,7 +75,8 @@ $_smarty_tpl->tpl_vars['country']->do_else = false;
                 <td id="<?php echo $_smarty_tpl->tpl_vars['country']->value->id_name;?>
 "><?php echo $_smarty_tpl->tpl_vars['country']->value->name;?>
  </td>
-                <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+
+                <?php if ($_SESSION['USER_ROL'] == 'admin') {?>
                     <td><a class="btn btn-warning" href="editCountry/<?php echo $_smarty_tpl->tpl_vars['country']->value->id_country;?>
 ">Editar</button></td>
                     <td><a class="btn btn-danger" href="delCountry/<?php echo $_smarty_tpl->tpl_vars['country']->value->id_country;?>

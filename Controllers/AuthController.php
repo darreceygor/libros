@@ -46,10 +46,11 @@ class AuthController {
                 session_start();
                 $_SESSION['USER_ID'] = $user->id;
                 $_SESSION['USER_EMAIL'] = $user->email;
+                $_SESSION['USER_ROL'] = $user->rol;
 
                 header("Location: " . BASE_URL);
             }else{
-                $this->suthview->showFormLogin("Usuario o contraseña invalido");
+                $this->authview->showFormLogin("Usuario o contraseña invalido");
             }
         }
 
@@ -67,10 +68,21 @@ class AuthController {
         $this->view->showListUser($users); 
     }
 
+    function user(){
+        $this->authview->showFormRegister();
+    }   
     
     function addUser(){
-       
-        $this->authview->showAddUser();
+        $rol='user';
+
+        if(!empty($_POST['email'])&& !empty($_POST['password'])){
+            $email = $_REQUEST['email'];
+            $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+
+        $this->usermodel->addUser($email,$password,$rol);
+        $this->authview->showAddUser(); 
+        }
     }
 
     function delUser($id){

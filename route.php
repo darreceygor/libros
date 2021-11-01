@@ -54,10 +54,14 @@ switch ($params[0]) {
         $authController = new AuthController();
         $authController->userAdmin(); 
         break;
-     case 'addUser':
+    case 'user':
         $authcontroller = new AuthController;
-        $authcontroller->addUser();
+        $authcontroller->user();
         break; 
+    case 'addUser':
+        $authController = new AuthController;
+        $authController->addUser();
+        break;
     case 'delUser':
         $authcontroller = new AuthController;
         $authcontroller->delUser($params[1]);

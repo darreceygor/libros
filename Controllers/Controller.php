@@ -29,15 +29,15 @@ class Controller{
     /*FIN PAGINAS PRINCIPALES*/
 
     /* BOOKS */
-    function getBooks(){ /*LISTADO PUBLICO*/
+         function getBooks(){ /*LISTADO PUBLICO*/
         $this->authHelper->checkLoggedIn();
         $books=$this->model->getBooks();
         $countries=$this->model->getCountries();
         $this->view->showListBooksAdmin($books,$countries);
-    }
+    } 
 
     function getListBooks($page){ /*LISTADO PUBLICO*/
-                
+        $this->authHelper->checkLoggedIn();   
         /*variables para paginacion*/
         $itemsPerPage=$this->model->itemsPerPage();
         $books=$this->model->getBooksLimit($page);

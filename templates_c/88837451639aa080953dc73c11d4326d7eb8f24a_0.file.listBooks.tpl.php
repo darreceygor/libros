@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-27 21:41:56
+/* Smarty version 3.1.39, created on 2021-11-01 19:16:19
   from 'C:\xampp1\htdocs\TPE\libros\templates\listBooks.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6179ab849dc208_14147984',
+  'unifunc' => 'content_61802ef3b4c818_16493356',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '88837451639aa080953dc73c11d4326d7eb8f24a' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\listBooks.tpl',
-      1 => 1635363713,
+      1 => 1635790578,
       2 => 'file',
     ),
   ),
@@ -24,20 +24,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_6179ab849dc208_14147984 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61802ef3b4c818_16493356 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 
 
-<?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+<?php if ($_SESSION['USER_ROL'] == 'admin') {?>
     <?php $_smarty_tpl->_subTemplateRender("file:templates/admin-nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }?>
 <div class="container mt-3">
     <h3> Listado de Libros</h3>
+    <h5><?php echo $_SESSION['USER_ROL'];?>
+</h5>
 
-    <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'books') {?>
+    <?php if ($_SESSION['USER_ROL'] == 'user') {?>
         <div class="input-group mb-3">
             <form action="search" method="GET">
                 <input type="text" class="form-control" placeholder="Search books..." id="filter" >
@@ -94,7 +96,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <table class="table able-striped mt-3">
   <thead>
     <tr>
-        <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'books') {?>
+        <?php if ($_SESSION['USER_ROL'] == 'user') {?>
             <th></th>
         <?php }?>
         <th scope="col">#</th>
@@ -102,7 +104,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <th scope="col">Autor</th>
         <th scope="col">Year</th>
         <th scope="col">Country</th>
-        <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+        
+        <?php if ($_SESSION['USER_ROL'] == 'admin') {?>
             <th col=3> Actions <th>
         <?php }?>
     </tr>
@@ -116,7 +119,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['book']->value) {
 $_smarty_tpl->tpl_vars['book']->do_else = false;
 ?>
             <tr>
-                <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'books') {?>
+                <?php if ($_SESSION['USER_ROL'] == 'user') {?>
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
 /<?php echo $_smarty_tpl->tpl_vars['user_rol']->value;?>
@@ -138,7 +141,8 @@ $_smarty_tpl->tpl_vars['book']->do_else = false;
                 <td id="<?php echo $_smarty_tpl->tpl_vars['book']->value->name;?>
 "><?php echo $_smarty_tpl->tpl_vars['book']->value->name;?>
 </td>
-                <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+                
+                <?php if ($_SESSION['USER_ROL'] == 'admin') {?>
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
 /<?php echo $_smarty_tpl->tpl_vars['user_rol']->value;?>
@@ -160,7 +164,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </table>
 
 
-    <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'books') {?>   
+    <?php if ($_SESSION['USER_ROL'] == 'user') {?>   
     <div class="m-0 row justify-content-center"> 
         <div class="col-auto p-3 text-center">
             <ul class="pagination">

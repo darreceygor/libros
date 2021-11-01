@@ -3,13 +3,14 @@
 
 
 
-{if $user_rol=='admin'}
+{if $smarty.session.USER_ROL=='admin'}
     {include file="templates/admin-nav.tpl"}
 {/if}
 <div class="container mt-3">
     <h3> Listado de Libros</h3>
+    <h5>{$smarty.session.USER_ROL}</h5>
 
-    {if $user_rol=='books'}
+    {if $smarty.session.USER_ROL=='user'}
         <div class="input-group mb-3">
             <form action="search" method="GET">
                 <input type="text" class="form-control" placeholder="Search books..." id="filter" >
@@ -57,7 +58,7 @@
 <table class="table able-striped mt-3">
   <thead>
     <tr>
-        {if $user_rol=='books'}
+        {if $smarty.session.USER_ROL=='user'}
             <th></th>
         {/if}
         <th scope="col">#</th>
@@ -65,7 +66,8 @@
         <th scope="col">Autor</th>
         <th scope="col">Year</th>
         <th scope="col">Country</th>
-        {if $user_rol=='admin'}
+        
+        {if $smarty.session.USER_ROL=='admin'}
             <th col=3> Actions <th>
         {/if}
     </tr>
@@ -74,7 +76,7 @@
     <tr>
         {foreach from=$books item=$book}
             <tr>
-                {if $user_rol=='books'}
+                {if $smarty.session.USER_ROL=='user'}
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/{$book->id_book}/{$user_rol}">Ver</a>
                     </td>
@@ -84,7 +86,8 @@
                 <td id="{$book->b_autor}">{$book->b_autor}</td>
                 <td id="{$book->b_year}">{$book->b_year}</td>
                 <td id="{$book->name}">{$book->name}</td>
-                {if $user_rol=='admin'}
+                
+                {if $smarty.session.USER_ROL=='admin'}
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/{$book->id_book}/{$user_rol}">Ver</a>
                         <a class="btn btn-warning btn-sm" href="editBook/{$book->id_book}">Editar</a>
@@ -100,7 +103,7 @@
     </table>
 
 
-    {if $user_rol=='books'}   
+    {if $smarty.session.USER_ROL=='user'}   
     <div class="m-0 row justify-content-center"> 
         <div class="col-auto p-3 text-center">
             <ul class="pagination">

@@ -88,7 +88,7 @@ class View {
 
         $this->smarty->assign('books', $books);
         
-        $this->smarty->assign('user_rol','books');
+        $this->smarty->assign('user_rol','user');
         $this->smarty->display('templates/listBooks.tpl');
     }
 
@@ -99,7 +99,7 @@ class View {
         $this->smarty->assign('countries',$countries);
         $this->smarty->assign('user_rol','admin');
         $this->smarty->display('templates/listBooks.tpl');
-    }  
+    } 
 
     function editBook($book, $countries) {
         $this->smarty->assign('book', $book);
@@ -109,7 +109,7 @@ class View {
     
     function showListCountries($countries){
         $this->smarty->assign('countries', $countries);
-        $this->smarty->assign('user_rol','books');
+        $this->smarty->assign('user_rol','user');
         $this->smarty->display('templates/listCountries.tpl');
     }
 

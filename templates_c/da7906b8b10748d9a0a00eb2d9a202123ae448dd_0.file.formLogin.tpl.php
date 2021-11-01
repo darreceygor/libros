@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-26 20:00:48
+/* Smarty version 3.1.39, created on 2021-11-01 17:46:07
   from 'C:\xampp1\htdocs\TPE\libros\templates\formLogin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61784250d861e8_17273340',
+  'unifunc' => 'content_618019cf0a8ee3_35692374',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da7906b8b10748d9a0a00eb2d9a202123ae448dd' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\formLogin.tpl',
-      1 => 1635271246,
+      1 => 1635784970,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_61784250d861e8_17273340 (Smarty_Internal_Template $_smarty_tpl) {
+function content_618019cf0a8ee3_35692374 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -49,7 +49,7 @@ $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smart
 
             <div class="col-md-auto col-8">
                     <button type="submit" class="btn btn-primary">Sign in</button>
-                    <a href="addUser" class="btn btn-secondary">Register</a>
+                    <a href="user" class="btn btn-secondary">Register</a>
             </div>
         </div>
         <div class="col-md-auto col-8">
