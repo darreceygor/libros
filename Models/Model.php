@@ -62,10 +62,19 @@ class Model {
         return $users;
     }
 
-    function addBook($title, $autor, $year, $country){
-        $query = $this->db->prepare("INSERT INTO books(b_title, b_autor, b_year, id_country) VALUES (?,?,?,?)");
-        $query->execute([$title, $autor, $year, $country]);
+    function addBook($title, $autor, $year, $country, $image = null){
+        $pathImage = null;
+        if ($image)
+            $pathImage = $this->uploadImage($image);
+        $query = $this->db->prepare("INSERT INTO books(b_title, b_autor, b_year, id_country, b_image) VALUES (?,?,?,?,?)");
+        $query->execute([$title, $autor, $year, $country,$pathImage]);
 
+    }
+
+    private function uploadImage($image){
+        $target = 'img/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;
     }
 
     function modBook($id, $newTitle, $newAutor, $newYear, $newCountry){

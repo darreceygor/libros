@@ -2,6 +2,7 @@
 
 require_once ('libs/smarty-3.1.39/libs/Smarty.class.php');
 
+
 class View {
 
     private $smarty;
@@ -88,7 +89,7 @@ class View {
 
         $this->smarty->assign('books', $books);
         
-        $this->smarty->assign('user_rol','user');
+        $this->smarty->assign('user_rol','user'); 
         $this->smarty->display('templates/listBooks.tpl');
     }
 

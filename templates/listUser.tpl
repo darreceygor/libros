@@ -1,9 +1,9 @@
 {include file="templates/header.tpl"}
 {include file="templates/nav.tpl"}
 
-{if $user_rol=='admin'}
+{* {if $user_rol=='admin'}
     {include file="templates/admin-nav.tpl"}
-{/if}
+{/if} *}
 <div class="container mt-3">
     <h3> Listado de Usuarios</h3>
 

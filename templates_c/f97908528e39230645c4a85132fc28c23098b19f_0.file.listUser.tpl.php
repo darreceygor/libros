@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-29 17:02:28
+/* Smarty version 3.1.39, created on 2021-11-02 16:06:46
   from 'C:\xampp1\htdocs\TPE\libros\templates\listUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_617c0d043184c4_34672255',
+  'unifunc' => 'content_6181540676b205_28617696',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f97908528e39230645c4a85132fc28c23098b19f' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\listUser.tpl',
-      1 => 1635358500,
+      1 => 1635865604,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:templates/header.tpl' => 1,
     'file:templates/nav.tpl' => 1,
-    'file:templates/admin-nav.tpl' => 1,
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_617c0d043184c4_34672255 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6181540676b205_28617696 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-<?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
-    <?php $_smarty_tpl->_subTemplateRender("file:templates/admin-nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}?>
 <div class="container mt-3">
     <h3> Listado de Usuarios</h3>
 

@@ -2,15 +2,24 @@
 {include file="templates/nav.tpl"}
 
 
-
-{if $smarty.session.USER_ROL=='admin'}
-    {include file="templates/admin-nav.tpl"}
+{if isset($smarty.session.USER_ROL)}
+    {$user_rol=$smarty.session.USER_ROL}
+{* {else}
+    user_rol=user *}
 {/if}
+
+{* {if $user_rol=='admin'}
+    {include file="templates/admin-nav.tpl"}
+{/if} *}
+{* {if $user_rol=='admin'}
+    {include file="templates/admin-nav.tpl"}
+{/if} *}
+
 <div class="container mt-3">
     <h3> Listado de Libros</h3>
-    <h5>{$smarty.session.USER_ROL}</h5>
+    
 
-    {if $smarty.session.USER_ROL=='user'}
+    {if $user_rol=='user'}
         <div class="input-group mb-3">
             <form action="search" method="GET">
                 <input type="text" class="form-control" placeholder="Search books..." id="filter" >
@@ -21,7 +30,7 @@
 
         {if $user_rol=='admin'}
             <div class="container-sm mt-3">
-                <form name="formAddBook" method='POST' action="addBook" >
+                <form name="formAddBook" method='POST' action="addBook"  enctype="multipart/form-data">
                     <div class="row g-3">
                         <div><label></div>
                             <div class="col">
@@ -44,7 +53,7 @@
                                  
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="imageToUpload" name="input_image"   >
                             </div>
                         </div> 
                     <div class="mt-3">
@@ -58,7 +67,7 @@
 <table class="table able-striped mt-3">
   <thead>
     <tr>
-        {if $smarty.session.USER_ROL=='user'}
+        {if $user_rol=='user'}
             <th></th>
         {/if}
         <th scope="col">#</th>
@@ -67,7 +76,7 @@
         <th scope="col">Year</th>
         <th scope="col">Country</th>
         
-        {if $smarty.session.USER_ROL=='admin'}
+        {if $user_rol=='admin'}
             <th col=3> Actions <th>
         {/if}
     </tr>
@@ -76,7 +85,7 @@
     <tr>
         {foreach from=$books item=$book}
             <tr>
-                {if $smarty.session.USER_ROL=='user'}
+                {if $user_rol=='user'}
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/{$book->id_book}/{$user_rol}">Ver</a>
                     </td>
@@ -87,7 +96,7 @@
                 <td id="{$book->b_year}">{$book->b_year}</td>
                 <td id="{$book->name}">{$book->name}</td>
                 
-                {if $smarty.session.USER_ROL=='admin'}
+                {if $user_rol=='admin'}
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/{$book->id_book}/{$user_rol}">Ver</a>
                         <a class="btn btn-warning btn-sm" href="editBook/{$book->id_book}">Editar</a>
@@ -103,7 +112,7 @@
     </table>
 
 
-    {if $smarty.session.USER_ROL=='user'}   
+    {if $user_rol !='admin'}  
     <div class="m-0 row justify-content-center"> 
         <div class="col-auto p-3 text-center">
             <ul class="pagination">
@@ -116,7 +125,7 @@
             </ul>
         </div>
     </div>
-    {/if}
+    {/if} 
 
 </div>
 

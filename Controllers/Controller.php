@@ -37,7 +37,7 @@ class Controller{
     } 
 
     function getListBooks($page){ /*LISTADO PUBLICO*/
-        $this->authHelper->checkLoggedIn();   
+        /* $this->authHelper->checkLoggedIn();  */  
         /*variables para paginacion*/
         $itemsPerPage=$this->model->itemsPerPage();
         $books=$this->model->getBooksLimit($page);
@@ -63,7 +63,14 @@ class Controller{
             $year = $_REQUEST['year'];
             $country = $_REQUEST['country'];
 
-            $this->model->addBook($title, $autor, $year, $country);
+            if($_FILES['input_image']['type'] == "image/jpg" || 
+                $_FILES['input_image']['type'] == "image/jpeg" || 
+                $_FILES['input_image']['type'] == "image/png"){ 
+                $image = $_FILES['input_image']['tmp_name'];
+                $this->model->addBook($title, $autor, $year, $country, $image);
+            }else{
+                $this->model->addBook($title, $autor, $year, $country);
+                }
             $this->view->showAdminBookLocation(); 
         }
     }
