@@ -18,9 +18,9 @@ class UserModel{
      }
 
      /*traes un usuario*/
-     public function getUser($email) {
-        $query = $this->db->prepare('SELECT * FROM users WHERE email = ?');
-        $query->execute(array($email));
+     public function getUser($id) {
+        $query = $this->db->prepare('SELECT * FROM users WHERE id = ?');
+        $query->execute(array($id));
 
         return $query->fetch(PDO::FETCH_OBJ);
     }
@@ -31,13 +31,22 @@ class UserModel{
         $query->execute([$email,$password,$rol]);
    }
 
+    function delUser($id){
+        $query = $this->db->prepare("DELETE FROM users WHERE id=?");
+        $query->execute(array($id));
+    }
 
 
-
-
-   function delUser($id){
-    $query = $this->db->prepare("DELETE FROM users WHERE id=?");
-    $query->execute(array($id));
-}
-
+    function modUser($id, $newRol){
+        
+        try{
+            $this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            $query = $this->db->prepare('UPDATE users SET rol=? WHERE id=?');
+            $query->execute([$newRol, $id]); 
+        }
+        catch (PDOException $error) {
+            $error->getMessage();
+            echo $error;
+        }
+    }
 }

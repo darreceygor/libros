@@ -22,7 +22,7 @@
     {if $user_rol=='user'}
         <div class="input-group mb-3">
             <form action="search" method="GET">
-                <input type="text" class="form-control" placeholder="Search books..." id="filter" >
+                <input type="text" class="form-control" placeholder="Buscar libros..." id="filter" >
                 <button class="btn btn-success mt-1" type="submit" id="filter" name="filter">Buscar </button>
             </form>
         </div>
@@ -42,7 +42,7 @@
                             <div class="col">
                                 <label> Autor </label>
                                 <input type="text" class="form-control" name ="autor" placeholder="Autor" required>
-                                <label> Country</label>
+                                <label> Pais</label>
                                 <select class="form-control" name="country">
                                     <option selected>Elegir</option>
                                         {foreach from=$countries item=$country}
@@ -53,11 +53,11 @@
                                  
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="imageToUpload" name="input_image"   >
+                                <input type="file" class="form-control" id="imageToUpload" name="input_image">
                             </div>
                         </div> 
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-success" >Agregar</button>
+                        <button type="submit" class="btn btn-success" >Guardar</button>
                     </div>
                 </form>   
             </div> 
@@ -71,13 +71,14 @@
             <th></th>
         {/if}
         <th scope="col">#</th>
-        <th scope="col">Title</th>
+        <th scope="col">Titulo</th>
         <th scope="col">Autor</th>
-        <th scope="col">Year</th>
-        <th scope="col">Country</th>
+        <th scope="col">Año</th>
+        <th scope="col">Pais</th>
+        <th scope="col">Imagen</th>
         
         {if $user_rol=='admin'}
-            <th col=3> Actions <th>
+            <th col=3> Acciones <th>
         {/if}
     </tr>
   </thead>
@@ -95,6 +96,8 @@
                 <td id="{$book->b_autor}">{$book->b_autor}</td>
                 <td id="{$book->b_year}">{$book->b_year}</td>
                 <td id="{$book->name}">{$book->name}</td>
+                <td id="{$book->image}">{$book->b_image}</td>
+
                 
                 {if $user_rol=='admin'}
                     <td>
@@ -105,7 +108,16 @@
                 {/if}
                 
     </tr> 
-        {/foreach}
+    {* SECCION DE COMENTARIOS EN CADA UNA DE LAS LINEAS QUE CORRESPONDE A UNA FICHA: LIBRO*}
+
+        <td colspan="6" class="table-active">Comentarios...
+            <section id="comments">
+                <ul class="list-comments">
+                </ul>
+             </section>
+        </td>
+
+    {/foreach}
         <nav aria-label="Page navigation example">
 </nav>
     </tbody>
@@ -117,11 +129,11 @@
         <div class="col-auto p-3 text-center">
             <ul class="pagination">
 
-                <li class="page-item {$classPrev}"><a class="page-link" href="books/{$previous}">Previous</a></li>
+                <li class="page-item {$classPrev}"><a class="page-link" href="books/{$previous}">Anterior</a></li>
                 {for $menuItem=1 to $pages}
                     <li class="page-item"><a class="page-link" href="books/{$menuItem}">{$menuItem}</a></li>
                 {/for}
-                <li class="page-item {$classNext}"><a class="page-link" href="books/{$next}">Next</a></li>
+                <li class="page-item {$classNext}"><a class="page-link" href="books/{$next}">Siguiente</a></li>
             </ul>
         </div>
     </div>
@@ -129,6 +141,6 @@
 
 </div>
 
-
+<script src="js/api.js"></script>
 
 {include file="templates/footer.tpl"}

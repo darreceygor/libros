@@ -13,9 +13,9 @@
         <th scope="col">#</th>
         <th scope="col">Email</th>
         <th scope="col">Rol</th>
-        <th scope="col">Password</th>
+        <th scope="col">Contraseña</th>
         {if $user_rol=='admin'}
-            <th scope="col">Actions</th>
+            <th scope="col">Acciones</th>
         {/if}
     </tr>
   </thead>
@@ -27,7 +27,7 @@
                 <td id="{$user->rol}">{$user->rol}</td>
                 <td id="{$user->password}">{$user->password}</td>
                 {if $user_rol=='admin'}
-                    <td><a class="btn btn-secondary " href="#">Roles</button></td>
+                    <td><a class="btn btn-secondary " href="editUser/{$user->id}">Roles</button></td>
                     <td><a class="btn btn-danger" href="delUser/{$user->id}">Eliminar</a></td>
                 {/if}
                 

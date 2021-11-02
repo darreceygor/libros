@@ -54,6 +54,7 @@ class Model {
 
    
 /**********************************/
+
     function getUsers (){
         $sentence= "SELECT * FROM users";
         $query = $this->db->prepare($sentence);

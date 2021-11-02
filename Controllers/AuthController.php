@@ -73,13 +73,11 @@ class AuthController {
     }   
     
     function addUser(){
-        $rol='user';
+        $rol='admin';
 
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
             $email = $_REQUEST['email'];
             $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-
         $this->usermodel->addUser($email,$password,$rol);
         $this->authview->showAddUser(); 
         }
@@ -92,6 +90,20 @@ class AuthController {
 
     }
 
+    function editUser($id){
+        $this->authHelper->checkLoggedIn();
+        $user=$this->usermodel->getUser($id);
+        $this->authview->editUser($user);           /*EDITAR: TRAE LA FICHA SEGUN ID*/
+    }
+
+    function modUser ($id){  
+        $this->authHelper->checkLoggedIn();
+        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $rol=password_hash($_REQUEST['rol'], PASSWORD_BCRYPT);
+            $this->usermodel->modUser($id,$rol);
+            $this->view->showAdminListLocation();
+        }
         
+    }   
 
 }

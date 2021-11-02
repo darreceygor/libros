@@ -12,16 +12,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="home">Home</a>
+        <a class="nav-link active" aria-current="page" href="home">Inicio</a>
 
         {* <a class="nav-link" href="countries">Countries List</a> *}
         {if $user_rol == 'admin'}
          {*  <a class="nav-link" href="countries">Countries List</a> *}
-          <a class="nav-link" >Administrator</a> 
+          <a class="nav-link" >Administrador</a> 
           
         {else}
-          <a class="nav-link" href="countries">Countries List</a>
-          <a class="nav-link" href="books/1">Books List</a>
+          <a class="nav-link" href="countries">Item: Paises</a>
+          <a class="nav-link" href="books/1">Fichas: Libros</a>
         {/if}
 
         {* {if (isset($smarty.session.USER_ID)) and ($smarty.session.USER_ROL=='admin') } 
@@ -32,9 +32,9 @@
           <div class="d-flex justify-content-end">
           
             {if isset($smarty.session.USER_ID) } 
-              <a class="nav-link" href="logout">{$smarty.session.USER_EMAIL}, Logout</a>
+              <a class="nav-link" href="logout">{$smarty.session.USER_EMAIL}, Salir</a>
             {else}
-              <a class="nav-link" href="login">Login</a>
+              <a class="nav-link" href="login">Ingresar</a>
             {/if}
           </div>
       </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-02 16:05:59
+/* Smarty version 3.1.39, created on 2021-11-02 16:28:24
   from 'C:\xampp1\htdocs\TPE\libros\templates\nav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_618153d732b910_19740431',
+  'unifunc' => 'content_61815918225655_20741381',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d299c93e1927b662fb946d0977dbcfdc2cc8462' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\nav.tpl',
-      1 => 1635865557,
+      1 => 1635866902,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/admin-nav.tpl' => 1,
   ),
 ),false)) {
-function content_618153d732b910_19740431 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61815918225655_20741381 (Smarty_Internal_Template $_smarty_tpl) {
 if ((isset($_SESSION['USER_ROL']))) {?>
   <?php $_smarty_tpl->_assignInScope('user_rol', $_SESSION['USER_ROL']);
 } else { ?>
@@ -36,23 +36,23 @@ if ((isset($_SESSION['USER_ROL']))) {?>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="home">Home</a>
+        <a class="nav-link active" aria-current="page" href="home">Inicio</a>
 
                 <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
-                   <a class="nav-link" >Administrator</a> 
+                   <a class="nav-link" >Administrador</a> 
           
         <?php } else { ?>
-          <a class="nav-link" href="countries">Countries List</a>
-          <a class="nav-link" href="books/1">Books List</a>
+          <a class="nav-link" href="countries">Item: Paises</a>
+          <a class="nav-link" href="books/1">Fichas: Libros</a>
         <?php }?>
 
                   <div class="d-flex justify-content-end">
           
             <?php if ((isset($_SESSION['USER_ID']))) {?> 
               <a class="nav-link" href="logout"><?php echo $_SESSION['USER_EMAIL'];?>
-, Logout</a>
+, Salir</a>
             <?php } else { ?>
-              <a class="nav-link" href="login">Login</a>
+              <a class="nav-link" href="login">Ingresar</a>
             <?php }?>
           </div>
       </div>

@@ -31,10 +31,10 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Country Name</th>
+            <th scope="col">Nombre de Pais</th>
 
             {if $user_rol=='admin'}
-                <th col=2> Actions <th>
+                <th col=2> Acciones <th>
             {/if}
         </tr>
     </thead>

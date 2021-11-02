@@ -22,4 +22,8 @@ class AuthView {
         $this->smarty->display('templates/formRegister.tpl');
     }
     
+    function editUser($users){
+        $this->smarty->assign('users', $users);
+        $this->smarty->display('templates/editUser.tpl');
+    }
 }

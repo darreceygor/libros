@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-02 16:06:34
+/* Smarty version 3.1.39, created on 2021-11-02 16:29:33
   from 'C:\xampp1\htdocs\TPE\libros\templates\listCountries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_618153faeda992_86963833',
+  'unifunc' => 'content_6181595dd16614_62927719',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f4ca23b40e77f7e7e99d1d1ef1b6b7fb46e3441d' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\listCountries.tpl',
-      1 => 1635865590,
+      1 => 1635866970,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_618153faeda992_86963833 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6181595dd16614_62927719 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -52,10 +52,10 @@ $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_i
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Country Name</th>
+            <th scope="col">Nombre de Pais</th>
 
             <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
-                <th col=2> Actions <th>
+                <th col=2> Acciones <th>
             <?php }?>
         </tr>
     </thead>

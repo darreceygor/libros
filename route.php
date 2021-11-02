@@ -66,6 +66,15 @@ switch ($params[0]) {
         $authcontroller = new AuthController;
         $authcontroller->delUser($params[1]);
         break; 
+    case 'modUser':
+        $authController = new AuthController;
+        $authController->modUser($params[1]);
+        break;
+    case 'editUser':
+        $authController = new AuthController;
+        $authController->editUser($params[1]);
+        break;
+    
 
 /************************ FIN MENU USERS *****************************/       
 /*********************************************************************/
