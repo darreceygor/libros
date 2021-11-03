@@ -41,9 +41,9 @@
     </div>
     <div>
           {if isset($user_rol)}
-            <h4><span class="badge rounded-pill bg-success">{$user_rol}</span></h4>
+            <h6><span class="badge rounded-pill bg-success">{$user_rol}</span></h6>
           {else}
-            <h4><span class="badge rounded-pill bg-secondary">anonimo</span></h4>
+            <h6><span class="badge rounded-pill bg-secondary">anonimo</span></h6>
           {/if} 
     </div>
   </div>

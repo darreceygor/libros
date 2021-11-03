@@ -39,8 +39,8 @@ class AuthController {
 
             //Obtengo el usuario de la base de datos
 
-            $user = $this->usermodel->getUser($email);
-            
+            $user = $this->usermodel->getUserLogin($email);
+
             //Si el usuario existe y las contraseñas coinciden
             if($user && password_verify($password,$user->password)){
                 session_start();
@@ -77,9 +77,12 @@ class AuthController {
 
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
             $email = $_REQUEST['email'];
-            $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $this->usermodel->addUser($email,$password,$rol);
-        $this->authview->showAddUser(); 
+            $password=$_POST['password'];
+
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $this->usermodel->addUser($email,$password,$rol);
+            $this->authview->showAddUser(); 
         }
     }
 
@@ -99,9 +102,9 @@ class AuthController {
     function modUser ($id){  
         $this->authHelper->checkLoggedIn();
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-            $rol=password_hash($_REQUEST['rol'], PASSWORD_BCRYPT);
+            $rol=$_REQUEST['rol'];
             $this->usermodel->modUser($id,$rol);
-            $this->view->showAdminListLocation();
+            $this->view->showAdminUserLocation();
         }
         
     }   

@@ -104,6 +104,14 @@ class Model {
         return $country;
     }
 
+ /*    function existCountry($name){
+        $query = $this->db->prepare("SELECT * FROM countries WHERE name LIKE '%".$name."%'");
+        $query->execute([$name]);
+        $exist = $query->fetchAll(PDO::FETCH_OBJ);
+        return $exist;
+
+    } */
+
     function getCountries(){
         $sentence="SELECT * FROM countries";
         $query = $this->db->prepare($sentence);

@@ -121,8 +121,14 @@ class Controller{
         $this->authHelper->checkLoggedIn();
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $name = $_REQUEST['name'];
-            $this->model->addCountry($name);
-            $this->view->showAdminListLocation();
+       /*      $exist =$this->model->existCountry($name);
+            if (empty($exist)){ */
+                $this->model->addCountry($name);
+                $this->view->showAdminListLocation();
+/*             }
+            else {
+                echo 'YA EXISTE PAIS CON ESE NOMBRE'; 
+            } */
         }
         else {
             echo 'ERROR AL INGRESAR PAIS'; 

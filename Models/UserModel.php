@@ -15,12 +15,19 @@ class UserModel{
           $user = $query->fetch(PDO::FETCH_OBJ);
 
           return $user;
-     }
+    }
 
      /*traes un usuario*/
      public function getUser($id) {
         $query = $this->db->prepare('SELECT * FROM users WHERE id = ?');
         $query->execute(array($id));
+
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getUserLogin($email) {
+        $query = $this->db->prepare('SELECT * FROM users WHERE email = ?');
+        $query->execute(array($email));
 
         return $query->fetch(PDO::FETCH_OBJ);
     }

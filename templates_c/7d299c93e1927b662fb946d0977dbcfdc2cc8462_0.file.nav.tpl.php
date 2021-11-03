@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-02 16:28:24
+/* Smarty version 3.1.39, created on 2021-11-03 13:22:30
   from 'C:\xampp1\htdocs\TPE\libros\templates\nav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61815918225655_20741381',
+  'unifunc' => 'content_61827f06b97994_65440144',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d299c93e1927b662fb946d0977dbcfdc2cc8462' => 
     array (
       0 => 'C:\\xampp1\\htdocs\\TPE\\libros\\templates\\nav.tpl',
-      1 => 1635866902,
+      1 => 1635942148,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/admin-nav.tpl' => 1,
   ),
 ),false)) {
-function content_61815918225655_20741381 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61827f06b97994_65440144 (Smarty_Internal_Template $_smarty_tpl) {
 if ((isset($_SESSION['USER_ROL']))) {?>
   <?php $_smarty_tpl->_assignInScope('user_rol', $_SESSION['USER_ROL']);
 } else { ?>
@@ -59,10 +59,10 @@ if ((isset($_SESSION['USER_ROL']))) {?>
     </div>
     <div>
           <?php if ((isset($_smarty_tpl->tpl_vars['user_rol']->value))) {?>
-            <h4><span class="badge rounded-pill bg-success"><?php echo $_smarty_tpl->tpl_vars['user_rol']->value;?>
-</span></h4>
+            <h6><span class="badge rounded-pill bg-success"><?php echo $_smarty_tpl->tpl_vars['user_rol']->value;?>
+</span></h6>
           <?php } else { ?>
-            <h4><span class="badge rounded-pill bg-secondary">anonimo</span></h4>
+            <h6><span class="badge rounded-pill bg-secondary">anonimo</span></h6>
           <?php }?> 
     </div>
   </div>

@@ -7,12 +7,18 @@
         
             <div class='col-9'>
                 <div class='form-group'>
-                    <label>Rol</label>
+                    <p>
+                    <label>Usuario: </label>
                     <label>{$users->email}</label>
+                    </p>
+                    <p>
+                    <label>Cambiar rol: </label>
                     <select name="rol">
+                        <option selected>Elegir...</option>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select>
+                    </p>
                 </div>
             </div>
         </div>
