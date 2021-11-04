@@ -4,8 +4,8 @@
 
 {if isset($smarty.session.USER_ROL)}
     {$user_rol=$smarty.session.USER_ROL}
-{* {else}
-    user_rol=user *}
+{else}
+    {$user_rol='anonimo' }
 {/if}
 
 {* {if $user_rol=='admin'}
@@ -110,11 +110,31 @@
     </tr> 
     {* SECCION DE COMENTARIOS EN CADA UNA DE LAS LINEAS QUE CORRESPONDE A UNA FICHA: LIBRO*}
 
-        <td colspan="6" class="table-active">Comentarios...
+    
+        <td colspan="6" class="table-active">
+        <form name="formAddComment" id="formAddComment" method='POST' >
+    {if $user_rol !='anonimo'}        
+        <div>
+                <label>Comentarios...</label>
+                <input type="text" name ="id_book" class="id_book" value="{$book->id_book}" >
+                <input type="text" name ="comment" class="comment">
+                <label>Rate</label>
+                <select name="rate" class="rate">
+                        <option selected>Elegir</option>
+                        <option name="rate" value="1">1</option>
+                        <option name="rate" value="2">2</option>
+                        <option name="rate" value="3">3</option>
+                        <option name="rate" value="4">4</option>
+                        <option name="rate" value="5">5</option>
+                    </select>
+                <button type="submit" class="btn btn-success btn-sm" >Enviar</button>
+            </div>
+    {/if}
             <section id="comments">
                 <ul class="list-comments">
                 </ul>
              </section>
+             
         </td>
 
     {/foreach}

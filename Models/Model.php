@@ -73,7 +73,7 @@ class Model {
     }
 
     private function uploadImage($image){
-        $target = 'img/' . uniqid() . '.jpg';
+        $target = 'img/books' . uniqid() . '.jpg';
         move_uploaded_file($image, $target);
         return $target;
     }

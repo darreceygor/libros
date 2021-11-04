@@ -29,7 +29,7 @@ class AuthController {
     
     }
 
-    public function login() {
+    public function userLogin() {
 
         //Creo la cuenta cuando venga en el POST
 
@@ -81,7 +81,7 @@ class AuthController {
 
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
-            $this->usermodel->addUser($email,$password,$rol);
+            $this->usermodel->addUser($email,$hash,$rol);
             $this->authview->showAddUser(); 
         }
     }

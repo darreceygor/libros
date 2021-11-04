@@ -4,6 +4,7 @@
 
 require_once "Controllers/Controller.php";
 require_once "Controllers/AuthController.php";
+require_once 'libs/Router.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
@@ -21,20 +22,17 @@ if (!empty($_GET['action'])) {
 
 $params = explode('/', $action);
 
-
-
-
 // determina que camino seguir según la acción
 switch ($params[0]) {
 
     case 'home':
         $controller = new Controller();
         $controller->showHome(); 
-        break;
+        break; 
     case 'admin': 
         $controller = new Controller();
         $controller->showAdmin(); 
-        break;
+        break; 
        
 /*********************************************************************/
 /**************************** MENU USERS *****************************/
@@ -44,11 +42,11 @@ switch ($params[0]) {
         break;
     case 'logout': 
         $authController = new AuthController();
-        $authController->logout(); 
-        break;  
+        $authController->logout();  
+        break;   
     case 'verify': 
         $authController = new AuthController();
-        $authController->login(); 
+        $authController->userLogin(); 
         break;
     case 'userAdmin':
         $authController = new AuthController();
