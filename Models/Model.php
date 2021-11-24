@@ -29,14 +29,14 @@ class Model {
 /*********** PAGINACION ***********************/
 
     function itemsPerPage(){
-        $itemsPerPage = 2;     /*   CANTIDAD DE ITEMS POR PAGINA QUE SE MOSTRARAN */
+        $itemsPerPage = 10;     /*   CANTIDAD DE ITEMS POR PAGINA QUE SE MOSTRARAN */
         return $itemsPerPage;
     }
 
     function getBooksLimit ($page = NULL){
         
-        $itemsPerPage= $this->itemsPerPage();
-        $iniciar=($page-1)*$itemsPerPage;
+        $itemsPerPage= $this->itemsPerPage();   /*cantidad de items por pagina*/
+        $iniciar=($page-1)*$itemsPerPage;       /*el inicio de la muestra esta en el numero de pagina por la cantidad de items*/
         $sentence= "SELECT * FROM books INNER JOIN countries ON books.id_country = countries.id_country LIMIT $iniciar,$itemsPerPage" ;
         $query = $this->db->prepare($sentence);
         $query->execute();
@@ -44,11 +44,11 @@ class Model {
         return $books;
     }
 
-    function getRowsBooks(){
+    function getRowsBooks(){                    /*cuento la cantidad de lineas del registro*/
         $sentence= "SELECT * FROM books" ;
         $query = $this->db->prepare($sentence);
         $query->execute();
-        $rows = $query->rowCount();
+        $rows = $query->rowCount();         
         return $rows;
     }
 
@@ -95,22 +95,17 @@ class Model {
         $query = $this->db->prepare("DELETE FROM books WHERE id_book=?");
         $query->execute(array($id));
     }
+/*FIN LIBROS*/
+/****************************************************************/
+/****************************************************************/
     
-    
+/*PAISES*/
     function getCountry($id){
         $query = $this->db->prepare("SELECT * FROM countries WHERE id_country=?");
         $query->execute([$id]);
         $country = $query->fetch(PDO::FETCH_OBJ);
         return $country;
     }
-
- /*    function existCountry($name){
-        $query = $this->db->prepare("SELECT * FROM countries WHERE name LIKE '%".$name."%'");
-        $query->execute([$name]);
-        $exist = $query->fetchAll(PDO::FETCH_OBJ);
-        return $exist;
-
-    } */
 
     function getCountries(){
         $sentence="SELECT * FROM countries";
@@ -143,17 +138,29 @@ class Model {
         $query->execute(array($id));
     }
 
-    function search($filter){
-        $row=null;
-        $query = $this->db->prepare("SELECT * FROM books WHERE b_title LIKE '%$filter%'");
-        $query->execute($filter);
-        $listSearch = $query->fetchAll(PDO::FETCH_OBJ);
-
-        while ($result = $query->fetch()){//Aqui indicamos que mientras haya un parametro a recorrer haga algo
-            $row[] = $result; // hacemos que la variable row guarde el array creado arriba
+/*VERIFICAR SI PAIS A INGRESAR, EXISTE*/
+    function existCountry($name){
+            
+            $query = $this->db->prepare("SELECT * FROM countries WHERE name LIKE '%$name%'");
+            $query->execute();
+            $exists = $query->fetchAll(PDO::FETCH_OBJ);
+            return $exists; 
         }
-        return $row; //retornamos el array de row
+
+/*FIN <PAISES></PAISES> */
+/****************************************************************/
+/****************************************************************/
+
+
+/* BUSQUEDA GENERAL SEGUN FILTRO*/
+    function search($buscar=NULL,$opcion=NULL){
+        
+        $query = $this->db->prepare("SELECT * FROM books WHERE $opcion LIKE '%$buscar%'");
+        $query->execute();
+        $rows = $query->fetchAll(PDO::FETCH_OBJ);
+        return $rows; 
     }
+
+    
+
 }
-
-

@@ -8,27 +8,28 @@
     {$user_rol='anonimo' }
 {/if}
 
-{* {if $user_rol=='admin'}
-    {include file="templates/admin-nav.tpl"}
-{/if} *}
-{* {if $user_rol=='admin'}
-    {include file="templates/admin-nav.tpl"}
-{/if} *}
-
 <div class="container mt-3">
     <h3> Listado de Libros</h3>
     
 
     {if $user_rol=='user'}
-        <div class="input-group mb-3">
-            <form action="search" method="GET">
-                <input type="text" class="form-control" placeholder="Buscar libros..." id="filter" >
-                <button class="btn btn-success mt-1" type="submit" id="filter" name="filter">Buscar </button>
-            </form>
+
+        <div class="container">
+            <div >
+                <label class="me-3"> Busqueda </label>
+                    <form name="searchForm" method='POST' action="search">
+                        <input type="text" name="buscar" >
+                        <input class="ms-2" type="radio" name="opcion" value="b_title"> Titulo
+                        <input class="ms-2" type="radio" name="opcion" value="b_autor"> Autor
+                        <input class="ms-2" type="radio" name="opcion" value="b_year"> Año
+                           
+                             <button type="submit" class="btn btn-success btn-sm ms-3" >Buscar</button>
+                    </form>
+            </div>
         </div>
     {/if}
-
-        {if $user_rol=='admin'}
+        
+          {if $user_rol=='admin'}
             <div class="container-sm mt-3">
                 <form name="formAddBook" method='POST' action="addBook"  enctype="multipart/form-data">
                     <div class="row g-3">
@@ -75,7 +76,6 @@
         <th scope="col">Autor</th>
         <th scope="col">Año</th>
         <th scope="col">Pais</th>
-        <th scope="col">Imagen</th>
         
         {if $user_rol=='admin'}
             <th col=3> Acciones <th>
@@ -86,7 +86,7 @@
     <tr>
         {foreach from=$books item=$book}
             <tr>
-                {if $user_rol=='user'}
+                {if $user_rol !='admin'}
                     <td>
                         <a class='btn btn-primary btn-sm' href="book/{$book->id_book}/{$user_rol}">Ver</a>
                     </td>
@@ -96,8 +96,6 @@
                 <td id="{$book->b_autor}">{$book->b_autor}</td>
                 <td id="{$book->b_year}">{$book->b_year}</td>
                 <td id="{$book->name}">{$book->name}</td>
-                <td id="{$book->image}">{$book->b_image}</td>
-
                 
                 {if $user_rol=='admin'}
                     <td>
@@ -109,35 +107,39 @@
                 
     </tr> 
     {* SECCION DE COMENTARIOS EN CADA UNA DE LAS LINEAS QUE CORRESPONDE A UNA FICHA: LIBRO*}
+    {* 
+            <td colspan="2"></td>
+            <td colspan="4" class="table-active">
+            <form name="formAddComment" id="formAddComment" method='POST' > *}
+        {* {if $user_rol !='anonimo'}        
+            <div>
+                    <label>Comentarios...</label>
+                    <input type="hidden" name ="id_book" class="id_book" value="{$book->id_book}" >
+                    <input type="text" name ="comment" class="comment">
+                    <label>Rate</label>
+                    <select name="rate" class="rate">
+                            <option selected>Elegir</option>
+                            <option name="rate" value="1">1</option>
+                            <option name="rate" value="2">2</option>
+                            <option name="rate" value="3">3</option>
+                            <option name="rate" value="4">4</option>
+                            <option name="rate" value="5">5</option>
+                        </select>
+                    <button type="submit" class="btn btn-success btn-sm" >Enviar</button>
+                </div>
+        {/if} *}
+    {*            <section id="comments">
+                    <ul class="list-comments">
+                    </ul>
+                </section>
+                
+            </td>*}
 
     
-        <td colspan="6" class="table-active">
-        <form name="formAddComment" id="formAddComment" method='POST' >
-    {if $user_rol !='anonimo'}        
-        <div>
-                <label>Comentarios...</label>
-                <input type="text" name ="id_book" class="id_book" value="{$book->id_book}" >
-                <input type="text" name ="comment" class="comment">
-                <label>Rate</label>
-                <select name="rate" class="rate">
-                        <option selected>Elegir</option>
-                        <option name="rate" value="1">1</option>
-                        <option name="rate" value="2">2</option>
-                        <option name="rate" value="3">3</option>
-                        <option name="rate" value="4">4</option>
-                        <option name="rate" value="5">5</option>
-                    </select>
-                <button type="submit" class="btn btn-success btn-sm" >Enviar</button>
-            </div>
-    {/if}
-            <section id="comments">
-                <ul class="list-comments">
-                </ul>
-             </section>
-             
-        </td>
-
-    {/foreach}
+    
+    {*FIN SECCION *}
+    
+    {/foreach} 
         <nav aria-label="Page navigation example">
 </nav>
     </tbody>

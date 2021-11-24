@@ -73,7 +73,7 @@ class AuthController {
     }   
     
     function addUser(){
-        $rol='admin';
+        $rol='user';
 
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
             $email = $_REQUEST['email'];

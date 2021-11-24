@@ -17,7 +17,7 @@ class Controller{
     
     }
 
-    /* PAGINAS PRINCIPALES*/
+/* PAGINAS PRINCIPALES*/
     function showHome(){
         $this->view->showHomePage();
     }
@@ -26,9 +26,12 @@ class Controller{
         $this->view->showAdminPage();
     }
 
-    /*FIN PAGINAS PRINCIPALES*/
+/*FIN PAGINAS PRINCIPALES*/
+/****************************************************************/
+/****************************************************************/
 
-    /* BOOKS */
+    
+/* BOOKS */
          function getBooks(){ /*LISTADO PUBLICO*/
         $this->authHelper->checkLoggedIn();
         $books=$this->model->getBooks();
@@ -37,14 +40,14 @@ class Controller{
     } 
 
     function getListBooks($page){ /*LISTADO PUBLICO*/
-        /* $this->authHelper->checkLoggedIn();  */  
-        /*variables para paginacion*/
-        $itemsPerPage=$this->model->itemsPerPage();
+        
+    /*variables para paginacion*/
+        $itemsPerPage=$this->model->itemsPerPage();  
         $books=$this->model->getBooksLimit($page);
         $rows=$this->model->getRowsBooks();
         $pages=ceil($rows/$itemsPerPage);
         
-        /* fin paginacion */
+    /* fin paginacion */
         $this->view->showListBooks($books,$rows,$itemsPerPage,$pages,$page);
     }
 
@@ -103,7 +106,7 @@ class Controller{
     }
   
 
-    /* COUNTRIES*/
+/* COUNTRIES*/
     function getCountries(){ /*LISTADO PUBLICO*/
         
         $countries=$this->model->getCountries();
@@ -116,22 +119,23 @@ class Controller{
         $this->view->showListCountriesAdmin($countries);
     }
 
-    /*AGREGAR ITEM*/
+/*AGREGAR ITEM*/
     function addCountry(){
         $this->authHelper->checkLoggedIn();
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $name = $_REQUEST['name'];
-       /*      $exist =$this->model->existCountry($name);
-            if (empty($exist)){ */
+
+            $exist =$this->model->existCountry($name);
+            if (empty($exist)){ 
                 $this->model->addCountry($name);
                 $this->view->showAdminListLocation();
-/*             }
+            }
             else {
-                echo 'YA EXISTE PAIS CON ESE NOMBRE'; 
-            } */
+                $this->view->showExist($name); 
+            } 
         }
         else {
-            echo 'ERROR AL INGRESAR PAIS'; 
+            $this->view->showError('countriesAdmin'); 
             } 
     }
 
@@ -149,42 +153,54 @@ class Controller{
             $this->view->showAdminListLocation();
         }
         else {
-            echo 'no llego a modcountry';
+            $this->view->showError('booksAdmin');
             
         } 
     }
 
-    /*BORRAR PAIS*/
+/*BORRAR PAIS*/
     function delCountry($id){
         $this->authHelper->checkLoggedIn();
-        $books=$this->model->getBooks();
-        $country=$this->model->getCountry($id);
-        $exist=FALSE;
+        $books=$this->model->getBooks();                                /*traigo todos los libros*/
+        $country=$this->model->getCountry($id);                         /*traigo todos los paises*/
+        $exist=FALSE;                                                   /*para comprobar si existe el pais dentro de libros*/
 
-        $this->model->getCountry($id);
-        $this->view->showAdminLocation();
+        $total = count($books);                                         /*limite superior para el while*/
+        $index=0;                                                       /*inicio para el while*/ 
 
-        $total = count($books);
-        $index=0;
-        while (($exist == FALSE) && ($index < $total)) {
-            if ($country->name == $books[$index]->id){
-                $exist = TRUE;
+        while (($exist === FALSE) && ($index < $total)) {               /* si existe es falso y el indice del ciclo es menor que el numero de registros*/  
+            if ($country->id_country == $books[$index]->id_country){    /* existe el id_pais en algun libro?*/
+                $exist = TRUE;                                           /*existe --> salgo*/   
             }
             $index++;
         }
-        if ($exist == FALSE) {
-            $this->model->delCountry($id);      
-            $this->view->showAdminListLocation();
+        if ($exist === FALSE) {             /*si no existe --> borro*/
+            $this->model->delCountry($id);
+            $this->view->showCorrect($id,'countriesAdmin');
         }
         else {
-            $this->view->showError();
+            $this->view->showError('countriesAdmin');
+            
         } 
     }
+/****************************************************************/
+/****************************************************************/
+/****************************************************************/
 
-    function search($filter){
-        $listSearch=$this->model->search($filter);
-        $this->view->searchList($listSearch);
+/*BUSQUEDA SEGUN FILTRO ELEGIDO*/
+    function search(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $buscar = $_REQUEST['buscar'];
+            $opcion = $_REQUEST['opcion'];
+        }
         
+        $rows=$this->model->search($buscar, $opcion);
+        if (empty($rows)){
+            $this->view->showError('booksAdmin');
+        }
+        else {
+        $this->view->searchList($rows);
+        }
     }
 
 

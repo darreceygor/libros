@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-04 05:46:45
-  from 'C:\xampp\htdocs\TPE-Web 2\libros\templates\listBooks.tpl' */
+/* Smarty version 3.1.39, created on 2021-11-24 03:35:04
+  from 'C:\xampp\htdocs\TPE-Web2\libros\templates\listBooks.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_618365b51750f9_69019717',
+  'unifunc' => 'content_619da4d8c66071_53177951',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '44a8ac11aad35c3cabd5afabad2135743fb96f7c' => 
+    '3c4387281a29e5f84b7b3f0eec423d0a48ceefd4' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TPE-Web 2\\libros\\templates\\listBooks.tpl',
-      1 => 1636001203,
+      0 => 'C:\\xampp\\htdocs\\TPE-Web2\\libros\\templates\\listBooks.tpl',
+      1 => 1637720893,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_618365b51750f9_69019717 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619da4d8c66071_53177951 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -35,21 +35,28 @@ $_smarty_tpl->_subTemplateRender("file:templates/nav.tpl", $_smarty_tpl->cache_i
     <?php $_smarty_tpl->_assignInScope('user_rol', 'anonimo');
 }?>
 
-
 <div class="container mt-3">
     <h3> Listado de Libros</h3>
     
 
     <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'user') {?>
-        <div class="input-group mb-3">
-            <form action="search" method="GET">
-                <input type="text" class="form-control" placeholder="Buscar libros..." id="filter" >
-                <button class="btn btn-success mt-1" type="submit" id="filter" name="filter">Buscar </button>
-            </form>
+
+        <div class="container">
+            <div >
+                <label class="me-3"> Busqueda </label>
+                    <form name="searchForm" method='POST' action="search">
+                        <input type="text" name="buscar" >
+                        <input class="ms-2" type="radio" name="opcion" value="b_title"> Titulo
+                        <input class="ms-2" type="radio" name="opcion" value="b_autor"> Autor
+                        <input class="ms-2" type="radio" name="opcion" value="b_year"> Año
+                           
+                             <button type="submit" class="btn btn-success btn-sm ms-3" >Buscar</button>
+                    </form>
+            </div>
         </div>
     <?php }?>
-
-        <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
+        
+          <?php if ($_smarty_tpl->tpl_vars['user_rol']->value == 'admin') {?>
             <div class="container-sm mt-3">
                 <form name="formAddBook" method='POST' action="addBook"  enctype="multipart/form-data">
                     <div class="row g-3">
@@ -156,38 +163,13 @@ $_smarty_tpl->tpl_vars['book']->do_else = false;
                 <?php }?>
                 
     </tr> 
+                    
     
     
-        <td colspan="6" class="table-active">
-        <form name="formAddComment" id="formAddComment" method='POST' >
-    <?php if ($_smarty_tpl->tpl_vars['user_rol']->value != 'anonimo') {?>        
-        <div>
-                <label>Comentarios...</label>
-                <input type="text" name ="id_book" class="id_book" value="<?php echo $_smarty_tpl->tpl_vars['book']->value->id_book;?>
-" >
-                <input type="text" name ="comment" class="comment">
-                <label>Rate</label>
-                <select name="rate" class="rate">
-                        <option selected>Elegir</option>
-                        <option name="rate" value="1">1</option>
-                        <option name="rate" value="2">2</option>
-                        <option name="rate" value="3">3</option>
-                        <option name="rate" value="4">4</option>
-                        <option name="rate" value="5">5</option>
-                    </select>
-                <button type="submit" class="btn btn-success btn-sm" >Enviar</button>
-            </div>
-    <?php }?>
-            <section id="comments">
-                <ul class="list-comments">
-                </ul>
-             </section>
-             
-        </td>
-
+        
     <?php
 }
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?> 
         <nav aria-label="Page navigation example">
 </nav>
     </tbody>

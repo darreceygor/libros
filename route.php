@@ -141,7 +141,7 @@ switch ($params[0]) {
 /**************************** MENU SEARCH ****************************/ 
     case 'search':
         $controller= new Controller();
-        $controller->search($params[1]);
+        $controller->search();
         break;
     default:
         echo'DEFAULT';

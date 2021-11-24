@@ -11,6 +11,7 @@ class View {
         $this->smarty = new Smarty();
     }
 
+/*PAGINAS PRINCIPALES*/
     function showHomePage (){
         $this->smarty->display('templates/home.tpl');
     }
@@ -19,6 +20,11 @@ class View {
         $this->smarty->display('templates/admin.tpl');
     }
 
+/*FIN PAGINAS PRINCIPALES*/
+/****************************************************************/
+/****************************************************************/
+
+    /*UBICACIONES*/
     function showHomeLocation(){
         header("Location: ".BASE_URL."home");
     }
@@ -42,32 +48,45 @@ class View {
         header("Location: ".BASE_URL."books");
     }
 
-    function showError(){
-        $this->smarty->display('templates/error.tpl');
+/*FIN UBICACIONES*/
+/****************************************************************/
+/****************************************************************/
+
+/*ERROR GENERAL*/
+    function showError($back = NULL){
+        $this->smarty->assign('back',$back);
+        $this->smarty->display('templates/showError.tpl');
     }
 
-/*     function showBooks($books){
-        $this->smarty->assign('estado', "admin");
-        $this->smarty->assign('books', $books);
-        $this->smarty->display('templates/showBooks.tpl'); /* muestra el listado de libros 
-    } */
-
-    function showBook($book, $country,$user_rol){
-        $this->smarty->assign('book', $book);
-        $this->smarty->assign('country', $country);
-        $this->smarty->assign('user_rol', $user_rol);
-        $this->smarty->display('templates/showBook.tpl');
-    }
-
+/*LISTADO DE USUARIOS*/
     function showListUser($users){
-        $this->smarty->assign('users', $users);
-        $this->smarty->assign('user_rol','admin');
-        $this->smarty->display('templates/listUser.tpl');
+            $this->smarty->assign('users', $users);
+            $this->smarty->assign('user_rol','admin');
+            $this->smarty->display('templates/listUser.tpl');
+        }
+    
+/*RESULTADO DE LA BUSQUEDA*/
+    function searchList($rows){
+        $this->smarty->assign('rows', $rows);
+        $this->smarty->display('templates/searchList.tpl');
+        
     }
 
-/**********************************************/
+/*EXISTE PAIS*/    
+    function showExist($name){
+        $this->smarty->assign('name', $name);
+         $this->smarty->display('templates/showExist.tpl');
+    }
+
+    function showCorrect($id,$back = NULL){
+        $this->smarty->assign('id',$id);
+        $this->smarty->assign('back',$back);
+        $this->smarty->display('templates/showCorrect.tpl');
+    }
+
+/************ PAGINACION **********************/
     function showListBooks($books, $rows, $itemsPerPage, $pages,$page){
-        /* variables paginacion*/    
+    /* variables paginacion*/    
 
         $classNext='';
         $classPrev='';
@@ -85,7 +104,7 @@ class View {
             $classNext='disabled';
         }
         $this->smarty->assign('classNext',$classNext);
-        /* fin variables paginacion*/ 
+    /* fin variables paginacion*/ 
 
         $this->smarty->assign('books', $books);
         
@@ -94,6 +113,13 @@ class View {
     }
 
 /**********************************************/
+
+    function showBook($book, $country,$user_rol){
+        $this->smarty->assign('book', $book);
+        $this->smarty->assign('country', $country);
+        $this->smarty->assign('user_rol', $user_rol);
+        $this->smarty->display('templates/showBook.tpl');
+    }
 
     function showListBooksAdmin($books,$countries){
         $this->smarty->assign('books', $books);
@@ -125,19 +151,8 @@ class View {
         $this->smarty->assign('country', $country);
         $this->smarty->display('templates/editCountry.tpl');
     }
-
-    
+ 
 /*******************************************/
-
-function searchList($filter){
-
-    $this->smarty->assign($filter);
-    $this->smarty->display('templates/searchList.tpl');
-
-}
-    
-
-
 
 
 
