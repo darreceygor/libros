@@ -5,5 +5,5 @@ Catalogo de libros
 ---------------------------------------------------------------------------------
 | usuarios      | user1@user.com, user2@user.com - user
 ---------------------------------------------------------------------------------
-|               | prueba1@prueba.com, prueba2@prueba.com - prueba
+| usuarios      | prueba1@prueba.com, prueba2@prueba.com - prueba
 ---------------------------------------------------------------------------------
