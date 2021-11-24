@@ -1,12 +1,13 @@
 # libros
 Catalogo de libros
 
-
-| usuario | contraseña
+<blockquote>
+  <p>| usuario | contraseña</p>
 ----------------------------------------------
-admin@admin.com | admin   
-user1@user.com | user
-user2@user.com | user
-prueba1@prueba.com | prueba
-prueba2@prueba.com | prueba
+  <p>admin@admin.com | admin   </p>
+  <p>user1@user.com | user</p>
+  <p>user2@user.com | user</p>
+  <p>prueba1@prueba.com | prueba</p>
+  <p>prueba2@prueba.com | prueba</p>
+</blockquote>
 
