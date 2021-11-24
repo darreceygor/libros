@@ -1,9 +1,8 @@
 # libros
 Catalogo de libros
 
-| administrador           | usuarios
+| administrador | admin@admin.com - admin   
 --------------------------------------------------------------------------------------------------------
-| admin@admin.com         | user1@user.com, user2@user.com      | prueba1@prueba.com, prueba2@prueba.com
---------------------------------------------------------------------------------------------------------
-| admin                   | user                                | prueba
+| usuarios      | user1@user.com, user2@user.com - user
+                | prueba1@prueba.com, prueba2@prueba.com - prueba
 --------------------------------------------------------------------------------------------------------
