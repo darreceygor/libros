@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2021 a las 03:38:07
+-- Tiempo de generación: 24-11-2021 a las 04:02:37
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -181,13 +181,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `rol`) VALUES
-(1, 'admin@admin.com', '$2a$12$a3ci7YRzKeYh7fsDu1PMa.fWFM1wkHSeW16.1Ljhl3vPrXxv1bS12', 'admin'),
-(2, '1@mail.com', '123', 'user'),
-(4, '3@mail.com', '123', 'user'),
-(5, '4@mail.com', '123', 'admin'),
-(6, '56@5.com', '1', 'user'),
-(8, '12@123.com', '$2y$10$HPjLoTfCcYCRpyi5RbSCg.SD3z0cxOKOW0nYiafkEoq28Z/w86eKe', 'user'),
-(9, 'user@user.com', '$2y$10$S4TRDGz.YmaqqFIRDerQ8.knpSOz3RJ7LRQD2JIEaIZvElj8g1fmi', 'user');
+(1, 'admin@admin.com', '$2a$12$yhsgqKv0nNH1nHPQIMuEGOH69yx9TUiL/bfEuF/EfR3DYX9P8mIiG', 'admin'),
+(2, 'user1@user.com', '$2a$12$Pyi1XTAAomsYqDjQgheyZ.YL2b/gEKawTylaAaVEqNlX./esDwM5y', 'user'),
+(6, 'prueba1@prueba.com', '$2a$12$uwYnena6dkwaj9pjPUH2kOc7bBsW8DQ93NcpZSdbHlmxvH/.d9WMm', 'user'),
+(8, 'prueba2@prueba.com', '$2a$12$uwYnena6dkwaj9pjPUH2kOc7bBsW8DQ93NcpZSdbHlmxvH/.d9WMm', 'user'),
+(9, 'user2@user.com', '$2a$12$3yjej0TTXzO9pCE6quCOd.Ku3SwVY2GWbqSUr//ixcUBCJYU.r4KC', 'user');
 
 --
 -- Índices para tablas volcadas
