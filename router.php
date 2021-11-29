@@ -4,7 +4,7 @@
 
 require_once "Controllers/Controller.php";
 require_once "Controllers/AuthController.php";
-require_once 'libs/Router.php';
+
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
@@ -144,8 +144,8 @@ switch ($params[0]) {
         $controller->search();
         break;
     default:
-        echo'DEFAULT';
+        echo'DEFAULT ROUTE';
         break;
-        die();
+        
     }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-07 17:25:27
+/* Smarty version 3.1.39, created on 2021-11-26 04:56:33
   from 'C:\xampp\htdocs\TPE-Web2\libros\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6187fdf7bceaa3_83792197',
+  'unifunc' => 'content_61a05af1a26d48_81780449',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c461506428510cdf229ab748a9bdd84bf004c5e0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE-Web2\\libros\\templates\\header.tpl',
-      1 => 1635993054,
+      1 => 1637898991,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6187fdf7bceaa3_83792197 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61a05af1a26d48_81780449 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +31,9 @@ function content_6187fdf7bceaa3_83792197 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="./css/styles.css" rel="stylesheet">
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"><?php echo '</script'; ?>
+>
     <title>Catalogo refactorizado</title>
 </head>
 <body>

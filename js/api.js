@@ -1,64 +1,93 @@
 
-window.onload = getcomments()
+const API_URL= "api/comments";
+
+let form = document.querySelector("#formComments");
+form.addEventListener('submit', addComments);
+
+let id = document.querySelector("#textComment");
 
 
-/* FORMATO MOCKAPI*/
-/* {
-    "id_book": "-----",
-    "coment": "------",
-    "rate": 1 a 5,
-    "id": "1"
-   } */
+async function getAll(){
 
-async function getcomments() {
-    await fetch('https://617e42292ff7e600174bd750.mockapi.io/coment/')
-    .then(response => response.json())
-    .then(comments => {
-        let content = document.querySelector(".list-comments");
-        content.innerHTML = "";
-        for(let comment of comments) {
-            content.innerHTML += createCommentHTML(comment);
-         }
-    })
-    .catch(error => console.log(error));
+    try {
+        let response = await fetch (API_URL);
+        let comments = await response.json();
+
+        render(comments);
+
+    } catch (e) {
+        console.log(e);
+        
+    }
 }
 
-function createCommentHTML(comment) {
-    let element = `<li class=""  ><a href=""><img class="icon-js" src="./img/boton-eliminar.png"></a>
-                    ${comment.id_book} : ${comment.coment}: ${comment.rate} </li>`;
-    return element;  
-}
-
-document.querySelector("#formAddComment").addEventListener('submit', addComment);
-
-async function addComment(e) {
-    e.preventDefault();
+function render (comments){
+    let allComments = document.querySelector("#allComments");
+    let valor = document.getElementById("allComments").getAttribute("value");  /*tomo el valor del libro actual*/
+    allComments.innerHTML = "";
+    for (comment of comments) {
+        if (comment.id_book === valor){
+            console.log(comment.id_comment);
+            let html = `<li> <div class="alert alert-dark row">
+                            <div class="col">${comment.comment}</div>
+                            <div class="col d-flex flex-row-reverse">${comment.score}</div>
+                            <div class="col d-flex flex-row-reverse bd-highlight">
+                                <form id="delComment" method="POST" resource="api/delComment">
+                                    <button type="submit" id="btn_del_comment" class="btn btn-sm" name=${comment.id_comment}>
+                                    <img class="icon" src="img/boton-eliminar.png"></button>
+                                </form>
+                            </div>
+                        </li>`;
+            allComments.innerHTML +=html;
+        }
+    }
     
-    let data = {
-        coment:  document.querySelector(".comment").value,
-        rate:  document.querySelector(".rate").value,
-        id_book:  document.querySelector(".id_book").value,
+}
+
+getAll();
+
+async function addComments (e){
+
+    e.preventDefault();
+
+    let data = new FormData(form);
+
+    let comment = {
+
+        comment: data.get('textComment'),
+        score:data.get('id_score'),
+        id_book:data.get ('id_book'),
+        id_user:data.get('id_user'),
     }
 
-    await fetch('https://617e42292ff7e600174bd750.mockapi.io/coment/',{
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},       
-        body: JSON.stringify(data) 
-     })
-     .then(response => {
-         getcomments();
-     })
-     .catch(error => console.log(error));
+    try { 
+        let response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(comment),
+        });
+        
+        if (response.ok) {
+            let data = await response.json();
+            let html = `<li> <div class="alert alert-dark row">
+            <div class="col">${comment.comment}</div>
+            <div class="col d-flex flex-row-reverse">${comment.score}</div>
+            <div class="col d-flex flex-row-reverse bd-highlight">
+                    <form id="delComment" method="GET" resource="api/delComment">
+                        <button type="submit" id="btn_del_comment" class="btn btn-sm" name=${comment.id_comment}>
+                        <img class="icon" src="img/boton-eliminar.png"></button>
+                    </form>
+                </div>
+            </li>`;
+            allComments.innerHTML +=html;
+            form.reset();
+        }
+
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 
-   async function delComment(e) {
-        let options = {
-            method: "DELETE",
-            headers: {
-                "Content-type": "application/json; charset=utf-8"
-            }
-        }; 
-        
-    /* FALTA TRAER EL ID DEL JSON PARA ELIMINAR */
-    } 
